@@ -8,7 +8,7 @@ namespace NameEntities
 {
 	/// <summary>
 	/// </summary>
-	public class NameDetail
+	public class NameDetailRecord
 	{
 		public int Id { get; set; }
 		public int NameId { get; set; }
@@ -36,7 +36,7 @@ namespace NameEntities
 		public string Meaning { get; set; }
 		public DateTime CreateDateTime { get; set; }
 
-		public virtual Name Name { get; set; }
-		public virtual Source Source { get; set; }
+		public virtual NameRecord Name { get; set; }
+		public virtual SourceRecord Source { get; set; }
 	}
 }

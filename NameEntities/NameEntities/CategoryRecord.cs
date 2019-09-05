@@ -7,14 +7,11 @@ using System.Threading.Tasks;
 namespace NameEntities
 {
 	/// <summary>
-	/// Category or Origin of names. Recursive structure.
+	/// Origin of names, or Regions containing multiple Origins. Recursive structure.
 	/// </summary>
-	public class Category
+	public class CategoryRecord
 	{
-		/// <summary>
-		/// Would be called Category, but that's the encloding type name.
-		/// </summary>
-		public string Text { get; set; }
+		public string Category { get; set; }
 		/// <summary>
 		/// The category that this record is nested under.
 		/// </summary>

@@ -9,13 +9,10 @@ namespace NameEntities
 	/// <summary>
 	/// A first or last (or both) name.
 	/// </summary>
-    public class Name
+    public class NameRecord
     {
 		public int Id { get; set; }
-		/// <summary>
-		/// Would be called "Name" but property names cannot match enclosing type name...because that's a constructor.
-		/// </summary>
-		public string Text { get; set; }
+		public string Name { get; set; }
 		/// <summary>
 		/// First letter of the name, for quick lookup.
 		/// </summary>
@@ -28,10 +25,10 @@ namespace NameEntities
 		/// <summary>
 		/// Spelling records where this name is the common name.
 		/// </summary>
-		public virtual ICollection<Spelling> CommonNameSpelling { get; set; }
+		public virtual ICollection<SpellingRecord> CommonNameSpelling { get; set; }
 		/// <summary>
 		/// Spelling records where this name is the variation name.
 		/// </summary>
-		public virtual ICollection<Spelling> VariationNameSpelling { get; set; }
+		public virtual ICollection<SpellingRecord> VariationNameSpelling { get; set; }
     }
 }
