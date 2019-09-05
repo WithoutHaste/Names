@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NameEntities
+namespace NameEntities.Entities
 {
 	/// <summary>
 	/// A nickname associated with the full version of the name.

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NameEntities
+namespace NameEntities.Entities
 {
 	/// <summary>
 	/// Origin of names, or Regions containing multiple Origins. Recursive structure.

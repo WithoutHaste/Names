@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NameEntities
+namespace NameEntities.Entities
 {
 	/// <summary>
 	/// These two names are spelling variations of each other.
