@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NameService", "NameService\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NameContracts", "..\NameContracts\NameContracts.csproj", "{D7A93245-4B7C-4271-AD9F-4086A8D915B4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NameEntities", "..\NameEntities\NameEntities\NameEntities.csproj", "{BBF62EB2-3D11-4329-8479-58C4EDAA3F0D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D7A93245-4B7C-4271-AD9F-4086A8D915B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7A93245-4B7C-4271-AD9F-4086A8D915B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7A93245-4B7C-4271-AD9F-4086A8D915B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBF62EB2-3D11-4329-8479-58C4EDAA3F0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBF62EB2-3D11-4329-8479-58C4EDAA3F0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBF62EB2-3D11-4329-8479-58C4EDAA3F0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBF62EB2-3D11-4329-8479-58C4EDAA3F0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
