@@ -12,10 +12,10 @@ namespace NameWebsite.Controllers
 		public ActionResult Index()
 		{
 			NameClient nameClient = new NameClient();
-			string data = nameClient.GetData(35);
+			ViewBag.message = nameClient.GetData(35);
 			nameClient.Close();
 			
-			return View(data);
+			return View();
 		}
 
 		public ActionResult About()
