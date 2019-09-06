@@ -51,10 +51,16 @@
   <ItemGroup>
     <Compile Include="BaseContext.cs" />
     <Compile Include="Configurations\NameConfiguration.cs" />
+    <Compile Include="Configurations\SpellingConfiguration.cs" />
     <Compile Include="Entities\CategoryRecord.cs" />
     <Compile Include="Entities\NameRecord.cs" />
     <Compile Include="Entities\NameDetailRecord.cs" />
     <Compile Include="Entities\NickNameRecord.cs" />
+    <Compile Include="Migrations\201909061710152_Initial.cs" />
+    <Compile Include="Migrations\201909061710152_Initial.Designer.cs">
+      <DependentUpon>201909061710152_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NameContext.cs" />
     <Compile Include="NameRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -64,6 +70,11 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201909061710152_Initial.resx">
+      <DependentUpon>201909061710152_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

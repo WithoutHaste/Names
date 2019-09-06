@@ -33,22 +33,22 @@ namespace NameEntities.Entities
 		/// <summary>
 		/// Spelling records where this name is the common name.
 		/// </summary>
-		[InverseProperty("CommonName")]
-		public virtual ICollection<SpellingRecord> AsCommonSpelling { get; set; }
+		//[InverseProperty("CommonName")]
+		//public virtual ICollection<SpellingRecord> AsCommonSpellings { get; set; }
 		/// <summary>
 		/// Spelling records where this name is the variation name.
 		/// </summary>
-		[InverseProperty("VariationName")]
-		public virtual ICollection<SpellingRecord> AsVariationSpelling { get; set; }
+		//[InverseProperty("VariationName")]
+		//public virtual ICollection<SpellingRecord> AsVariationSpellings { get; set; }
 		/// <summary>
 		/// Nickname records where this name is the nickname.
 		/// </summary>
-		[InverseProperty("NickName")]
-		public virtual ICollection<NickNameRecord> AsNickNames { get; set; }
+		//[InverseProperty("NickName")]
+		//public virtual ICollection<NickNameRecord> AsNickNames { get; set; }
 		/// <summary>
 		/// Nickname records where this name is the full name.
 		/// </summary>
-		[InverseProperty("FullName")]
-		public virtual ICollection<NickNameRecord> AsFullNames { get; set; }
+		//[InverseProperty("FullName")]
+		//public virtual ICollection<NickNameRecord> AsFullNames { get; set; }
 	}
 }

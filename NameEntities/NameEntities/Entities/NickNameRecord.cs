@@ -16,14 +16,14 @@ namespace NameEntities.Entities
 	{
 		[Key]
 		[Column(Order=1)]
-		[ForeignKey("NickName")]
+		//[ForeignKey("NickName")]
 		public int NickNameId { get; set; }
 		[Key]
 		[Column(Order=2)]
-		[ForeignKey("FullName")]
+		//[ForeignKey("FullName")]
 		public int FullNameId { get; set; }
 
-		public virtual NameRecord NickName { get; set; }
-		public virtual NameRecord FullName { get; set; }
+		//public virtual NameRecord NickName { get; set; }
+		//public virtual NameRecord FullName { get; set; }
 	}
 }
