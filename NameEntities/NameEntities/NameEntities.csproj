@@ -49,13 +49,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CategoryRecord.cs" />
-    <Compile Include="NameRecord.cs" />
-    <Compile Include="NameDetailRecord.cs" />
-    <Compile Include="NickName.cs" />
+    <Compile Include="BaseContext.cs" />
+    <Compile Include="Configurations\NameConfiguration.cs" />
+    <Compile Include="Entities\CategoryRecord.cs" />
+    <Compile Include="Entities\NameRecord.cs" />
+    <Compile Include="Entities\NameDetailRecord.cs" />
+    <Compile Include="Entities\NickNameRecord.cs" />
+    <Compile Include="NameContext.cs" />
+    <Compile Include="NameRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Source.cs" />
-    <Compile Include="Spelling.cs" />
+    <Compile Include="Entities\SourceRecord.cs" />
+    <Compile Include="Entities\SpellingRecord.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

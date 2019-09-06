@@ -41,6 +41,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\NameEntities\NameEntities\bin\Debug\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -114,6 +117,10 @@
     <ProjectReference Include="..\..\NameContracts\NameContracts.csproj">
       <Project>{d7a93245-4b7c-4271-ad9f-4086a8d915b4}</Project>
       <Name>NameContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\NameEntities\NameEntities\NameEntities.csproj">
+      <Project>{bbf62eb2-3d11-4329-8479-58c4edaa3f0d}</Project>
+      <Name>NameEntities</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
