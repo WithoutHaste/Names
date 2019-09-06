@@ -18,12 +18,14 @@ namespace NameEntities.Entities
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 		public int Id { get; set; }
 		[Required]
-		[MaxLength(200)]
+		[MaxLength(128)]
 		public string Name { get; set; }
 		/// <summary>
 		/// First letter of the name, for quick lookup.
 		/// </summary>
-		//public char FirstLetter { get; set; }
+		[Required]
+		[MaxLength(1)]
+		public string FirstLetter { get; set; }
 		/// <summary>
 		/// Arbitray value - is this name familiar to me personally?
 		/// </summary>

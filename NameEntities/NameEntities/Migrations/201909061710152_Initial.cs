@@ -8,14 +8,13 @@ namespace NameEntities.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.Name",
+                "dbo.Category",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(nullable: false, maxLength: 200),
-                        IsFamiliar = c.Boolean(),
+                        Category = c.String(nullable: false, maxLength: 128),
+                        SuperCategory = c.String(maxLength: 128),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Category);
             
             CreateTable(
                 "dbo.NameDetail",
@@ -28,8 +27,8 @@ namespace NameEntities.Migrations
                         IsGirl = c.Boolean(),
                         IsFirstName = c.Boolean(),
                         IsLastName = c.Boolean(),
-                        Origin = c.String(),
-                        Meaning = c.String(),
+                        Origin = c.String(maxLength: 128),
+                        Meaning = c.String(maxLength: 256),
                         CreateDateTime = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
@@ -39,14 +38,34 @@ namespace NameEntities.Migrations
                 .Index(t => t.SourceId);
             
             CreateTable(
+                "dbo.Name",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false, maxLength: 128),
+                        FirstLetter = c.String(nullable: false, maxLength: 1),
+                        IsFamiliar = c.Boolean(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
                 "dbo.Source",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(nullable: false),
-                        Url = c.String(),
+                        Name = c.String(nullable: false, maxLength: 128),
+                        Url = c.String(maxLength: 256),
                     })
                 .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.NickName",
+                c => new
+                    {
+                        NickNameId = c.Int(nullable: false),
+                        FullNameId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.NickNameId, t.FullNameId });
             
             CreateTable(
                 "dbo.Spelling",
@@ -66,9 +85,11 @@ namespace NameEntities.Migrations
             DropIndex("dbo.NameDetail", new[] { "SourceId" });
             DropIndex("dbo.NameDetail", new[] { "NameId" });
             DropTable("dbo.Spelling");
+            DropTable("dbo.NickName");
             DropTable("dbo.Source");
-            DropTable("dbo.NameDetail");
             DropTable("dbo.Name");
+            DropTable("dbo.NameDetail");
+            DropTable("dbo.Category");
         }
     }
 }

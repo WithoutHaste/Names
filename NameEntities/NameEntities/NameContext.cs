@@ -13,7 +13,11 @@ namespace NameEntities
 	public class NameContext : BaseContext<NameContext>
 	{
 		public DbSet<NameRecord> Names { get; set; }
+		public DbSet<NameDetailRecord> NameDetails { get; set; }
 		public DbSet<SpellingRecord> Spellings { get; set; }
+		public DbSet<NickNameRecord> NickNames { get; set; }
+		public DbSet<CategoryRecord> Categories { get; set; }
+		public DbSet<SourceRecord> Sources { get; set; }
 
 		public NameContext() : base("NameDatabase")
 		{

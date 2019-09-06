@@ -39,7 +39,9 @@ namespace NameEntities.Entities
 		/// <summary>
 		/// Region or country of origin.
 		/// </summary>
+		[MaxLength(128)]
 		public string Origin { get; set; }
+		[MaxLength(256)]
 		public string Meaning { get; set; }
 		[Required]
 		public DateTime CreateDateTime { get; set; }

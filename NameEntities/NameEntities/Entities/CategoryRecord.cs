@@ -15,10 +15,12 @@ namespace NameEntities.Entities
 	public class CategoryRecord
 	{
 		[Key]
+		[MaxLength(128)]
 		public string Category { get; set; }
 		/// <summary>
 		/// The category that this record is nested under.
 		/// </summary>
+		[MaxLength(128)]
 		public string SuperCategory { get; set; }
 	}
 }
