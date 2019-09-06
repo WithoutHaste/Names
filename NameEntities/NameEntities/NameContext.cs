@@ -27,7 +27,7 @@ namespace NameEntities
 		{
 			modelBuilder.Configurations
 				.Add(new NameConfiguration())
-				.Add(new SpellingConfiguration())
+				.Add(new SourceConfiguration())
 				;
 			base.OnModelCreating(modelBuilder);
 		}

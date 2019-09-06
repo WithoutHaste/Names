@@ -16,14 +16,14 @@ namespace NameEntities.Entities
 	{
 		[Key]
 		[Column(Order=1)]
-		//[ForeignKey("CommonName")]
+		[ForeignKey("CommonName")]
 		public int CommonNameId { get; set; }
 		[Key]
 		[Column(Order=2)]
-		//[ForeignKey("VariationName")]
+		[ForeignKey("VariationName")]
 		public int VariationNameId { get; set; }
 
-		//public virtual NameRecord CommonName { get; set; }
-		//public virtual NameRecord VariationName { get; set; }
+		public virtual NameRecord CommonName { get; set; }
+		public virtual NameRecord VariationName { get; set; }
 	}
 }

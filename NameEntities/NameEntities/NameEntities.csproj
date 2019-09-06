@@ -51,7 +51,7 @@
   <ItemGroup>
     <Compile Include="BaseContext.cs" />
     <Compile Include="Configurations\NameConfiguration.cs" />
-    <Compile Include="Configurations\SpellingConfiguration.cs" />
+    <Compile Include="Configurations\SourceConfiguration.cs" />
     <Compile Include="Entities\CategoryRecord.cs" />
     <Compile Include="Entities\NameRecord.cs" />
     <Compile Include="Entities\NameDetailRecord.cs" />

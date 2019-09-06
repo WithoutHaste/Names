@@ -24,5 +24,7 @@ namespace NameEntities.Entities
 		public string Name { get; set; }
 		[MaxLength(256)]
 		public string Url { get; set; }
+
+		public virtual ICollection<NameDetailRecord> NameDetails { get; set; }
 	}
 }
