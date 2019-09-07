@@ -15,6 +15,11 @@ namespace NameEntities.Entities
 	public class CategoryRecord
 	{
 		[Key]
+		public int Id { get; set; }
+		/// <summary>
+		/// A single category may be listed under multiple super categories.
+		/// </summary>
+		[Required]
 		[MaxLength(128)]
 		public string Category { get; set; }
 		/// <summary>

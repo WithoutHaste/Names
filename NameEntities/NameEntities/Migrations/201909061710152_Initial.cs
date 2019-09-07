@@ -11,10 +11,11 @@ namespace NameEntities.Migrations
                 "dbo.Category",
                 c => new
                     {
+                        Id = c.Int(nullable: false, identity: true),
                         Category = c.String(nullable: false, maxLength: 128),
                         SuperCategory = c.String(maxLength: 128),
                     })
-                .PrimaryKey(t => t.Category);
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.NameDetail",
