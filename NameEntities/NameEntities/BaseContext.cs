@@ -14,7 +14,7 @@ namespace NameEntities
 			Database.SetInitializer<T>(null);
 		}
 
-		protected BaseContext(string connectionStringToName)
+		protected BaseContext(string connectionStringToName) : base(connectionStringToName)
 		{
 		}
 

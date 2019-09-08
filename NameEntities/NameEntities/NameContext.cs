@@ -19,7 +19,7 @@ namespace NameEntities
 		public DbSet<CategoryRecord> Categories { get; set; }
 		public DbSet<SourceRecord> Sources { get; set; }
 
-		public NameContext() : base("NameDatabase")
+		public NameContext() : base("name=NameDatabase")
 		{
 		}
 
