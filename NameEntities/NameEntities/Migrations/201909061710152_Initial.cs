@@ -44,7 +44,7 @@ namespace NameEntities.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(nullable: false, maxLength: 128),
-                        FirstLetter = c.String(nullable: false, maxLength: 1),
+                        FirstLetter = c.String(nullable: false, maxLength: 4),
                         IsFamiliar = c.Boolean(),
                     })
                 .PrimaryKey(t => t.Id);

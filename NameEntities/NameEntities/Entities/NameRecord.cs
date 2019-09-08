@@ -23,8 +23,11 @@ namespace NameEntities.Entities
 		/// <summary>
 		/// First letter of the name, for quick lookup.
 		/// </summary>
+		/// <remarks>
+		/// MaxLength is greater than 1 because special characters like Ã are stored as more than one char internally, although they are displayed as one char.
+		/// </remarks>
 		[Required]
-		[MaxLength(1)]
+		[MaxLength(4)]
 		public string FirstLetter { get; set; }
 		/// <summary>
 		/// Arbitray value - is this name familiar to me personally?
