@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Names.Domain.Entities;
-using Names.Domain.Configurations;
+using Names.DataAccess.EntityFramework.Configurations;
 
-namespace Names.Domain
+namespace Names.DataAccess.EntityFramework
 {
 	public class NameContext : BaseContext<NameContext>
 	{

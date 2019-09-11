@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Names.Domain
+namespace Names.DataAccess.EntityFramework
 {
 	public abstract class BaseContext<T> : DbContext where T:DbContext
 	{

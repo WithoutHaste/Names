@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Names.Read.SoapService.Cont
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Names.Domain", "..\Names.Domain\Names.Domain.csproj", "{BBF62EB2-3D11-4329-8479-58C4EDAA3F0D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Names.DataAccess.EntityFramework", "..\Names.DataAccess.EntityFramework\Names.DataAccess.EntityFramework.csproj", "{C7C4513A-EFA7-4B70-A9BD-3A40209F5DEF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{BBF62EB2-3D11-4329-8479-58C4EDAA3F0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBF62EB2-3D11-4329-8479-58C4EDAA3F0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBF62EB2-3D11-4329-8479-58C4EDAA3F0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7C4513A-EFA7-4B70-A9BD-3A40209F5DEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7C4513A-EFA7-4B70-A9BD-3A40209F5DEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7C4513A-EFA7-4B70-A9BD-3A40209F5DEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7C4513A-EFA7-4B70-A9BD-3A40209F5DEF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

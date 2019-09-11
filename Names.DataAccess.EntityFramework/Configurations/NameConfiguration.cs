@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Names.Domain.Entities;
 
-namespace Names.Domain.Configurations
+namespace Names.DataAccess.EntityFramework.Configurations
 {
 	public class NameConfiguration : EntityTypeConfiguration<NameRecord>
 	{

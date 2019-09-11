@@ -5,8 +5,9 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
-using Names.Read.SoapService.Contracts;
+using Names.DataAccess.EntityFramework;
 using Names.Domain;
+using Names.Read.SoapService.Contracts;
 
 namespace Names.Read.SoapService
 {
@@ -17,7 +18,7 @@ namespace Names.Read.SoapService
 		{
 			//return string.Format("You entered: {0}", value);
 
-			NameRepository repository = new NameRepository();
+			INamesGateway repository = new NamesGateway();
 			return repository.TestConnection();
 		}
 	}

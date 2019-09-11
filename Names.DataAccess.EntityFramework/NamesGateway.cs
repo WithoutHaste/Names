@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Names.Domain;
 using Names.Domain.Entities;
 
-namespace Names.Domain
+namespace Names.DataAccess.EntityFramework
 {
 	/// <summary>
 	/// Used by other projects to access the data store.
 	/// </summary>
-	public class NameRepository
+	public class NamesGateway : INamesGateway
 	{
 		public string TestConnection()
 		{

@@ -114,13 +114,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Names.read.SoapService.Contracts\Names.Read.SoapService.Contracts.csproj">
-      <Project>{d7a93245-4b7c-4271-ad9f-4086a8d915b4}</Project>
-      <Name>NameContracts</Name>
+    <ProjectReference Include="..\..\Names.DataAccess.EntityFramework\Names.DataAccess.EntityFramework.csproj">
+      <Project>{c7c4513a-efa7-4b70-a9bd-3a40209f5def}</Project>
+      <Name>Names.DataAccess.EntityFramework</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Names.Domain\Names.Domain.csproj">
       <Project>{bbf62eb2-3d11-4329-8479-58c4edaa3f0d}</Project>
-      <Name>NameEntities</Name>
+      <Name>Names.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Names.read.SoapService.Contracts\Names.Read.SoapService.Contracts.csproj">
+      <Project>{d7a93245-4b7c-4271-ad9f-4086a8d915b4}</Project>
+      <Name>NameContracts</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
