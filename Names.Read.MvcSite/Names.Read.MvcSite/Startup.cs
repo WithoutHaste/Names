@@ -8,7 +8,6 @@ namespace Names.Read.MvcSite
     {
         public void Configuration(IAppBuilder app)
         {
-            ConfigureAuth(app);
         }
     }
 }
