@@ -14,12 +14,23 @@ namespace Names.Read.SoapService
 	[ServiceBehavior(IncludeExceptionDetailInFaults=true)]
 	public class NamesReadManager : INamesReadService
 	{
-		public string GetData(int value)
-		{
-			//return string.Format("You entered: {0}", value);
+		private INamesGateway _gateway = null;
+		private INamesGateway NamesGateway {
+			get {
+				if(_gateway == null)
+					_gateway = new NamesGateway();
+				return _gateway;
+			}
+		}
 
-			INamesGateway repository = new NamesGateway();
-			return repository.TestConnection();
+		public string TestDataStoreConnection()
+		{
+			return NamesGateway.TestDataStoreConnection();
+		}
+
+		public ICollection<string> GetNames()
+		{
+			return NamesGateway.GetNames();
 		}
 	}
 }

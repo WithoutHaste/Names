@@ -11,6 +11,9 @@ namespace Names.Read.SoapService.Contracts
 	public interface INamesReadService
 	{
 		[OperationContract]
-		string GetData(int value);
+		string TestDataStoreConnection();
+
+		[OperationContract]
+		ICollection<string> GetNames();
 	}
 }

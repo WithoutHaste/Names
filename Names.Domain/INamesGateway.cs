@@ -12,6 +12,14 @@ namespace Names.Domain
 	/// </summary>
 	public interface INamesGateway
 	{
-		string TestConnection();
+		/// <summary>
+		/// Minumum test that data store can be queried and data returned.
+		/// </summary>
+		string TestDataStoreConnection();
+
+		/// <summary>
+		/// Returns all first names.
+		/// </summary>
+		ICollection<string> GetNames();
 	}
 }

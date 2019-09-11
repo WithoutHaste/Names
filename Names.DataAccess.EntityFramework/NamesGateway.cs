@@ -13,12 +13,20 @@ namespace Names.DataAccess.EntityFramework
 	/// </summary>
 	public class NamesGateway : INamesGateway
 	{
-		public string TestConnection()
+		public string TestDataStoreConnection()
 		{
 			using(NamesContext context = new NamesContext())
 			{
 				List<NameRecord> names = context.Names.ToList();
 				return "Found " + names.Count + " names.";
+			}
+		}
+
+		public ICollection<string> GetNames()
+		{
+			using(NamesContext context = new NamesContext())
+			{
+				return context.Names.Select(n => n.Name).ToList();
 			}
 		}
 	}

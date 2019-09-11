@@ -13,9 +13,14 @@ namespace Names.Read.MvcSite.ServiceClients
 		{
 		}
 
-		public string GetData(int value)
+		public string TestDataStoreConnection()
 		{
-			return Channel.GetData(value);
+			return Channel.TestDataStoreConnection();
+		}
+
+		public ICollection<string> GetNames()
+		{
+			return Channel.GetNames();
 		}
 	}
 }

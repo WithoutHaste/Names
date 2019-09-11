@@ -12,10 +12,10 @@ namespace Names.Read.MvcSite.Controllers
 		public ActionResult Index()
 		{
 			NameClient nameClient = new NameClient();
-			ViewBag.message = nameClient.GetData(35);
+			ICollection<string> names = nameClient.GetNames();
 			nameClient.Close();
 
-			return View();
+			return View("Index", names);
 		}
 
 		public ActionResult About()
