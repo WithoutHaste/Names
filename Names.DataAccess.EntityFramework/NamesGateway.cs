@@ -26,7 +26,7 @@ namespace Names.DataAccess.EntityFramework
 		{
 			using(NamesContext context = new NamesContext())
 			{
-				return context.Names.Select(n => n.Name).ToList();
+				return context.Names.Select(n => n.Name).OrderBy(n => n).ToList();
 			}
 		}
 	}

@@ -18,7 +18,7 @@ namespace Names.Domain
 		string TestDataStoreConnection();
 
 		/// <summary>
-		/// Returns all first names.
+		/// Returns all first names, sorted alphabetically.
 		/// </summary>
 		ICollection<string> GetNames();
 	}
