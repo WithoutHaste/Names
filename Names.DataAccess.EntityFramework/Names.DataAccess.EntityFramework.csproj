@@ -52,7 +52,7 @@
     <Compile Include="BaseContext.cs" />
     <Compile Include="Configurations\NameConfiguration.cs" />
     <Compile Include="Configurations\SourceConfiguration.cs" />
-    <Compile Include="NameContext.cs" />
+    <Compile Include="NamesContext.cs" />
     <Compile Include="NamesGateway.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

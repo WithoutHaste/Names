@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Names.DataAccess.EntityFramework
 {
-	public abstract class BaseContext<T> : DbContext where T:DbContext
+	internal abstract class BaseContext<T> : DbContext where T:DbContext
 	{
 		static BaseContext()
 		{

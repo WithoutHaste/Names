@@ -15,7 +15,7 @@ namespace Names.DataAccess.EntityFramework
 	{
 		public string TestConnection()
 		{
-			using(NameContext context = new NameContext())
+			using(NamesContext context = new NamesContext())
 			{
 				List<NameRecord> names = context.Names.ToList();
 				return "Found " + names.Count + " names.";

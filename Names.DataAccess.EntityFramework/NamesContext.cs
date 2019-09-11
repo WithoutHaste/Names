@@ -10,7 +10,7 @@ using Names.DataAccess.EntityFramework.Configurations;
 
 namespace Names.DataAccess.EntityFramework
 {
-	public class NameContext : BaseContext<NameContext>
+	internal class NamesContext : BaseContext<NamesContext>
 	{
 		public DbSet<NameRecord> Names { get; set; }
 		public DbSet<NameDetailRecord> NameDetails { get; set; }
@@ -19,7 +19,7 @@ namespace Names.DataAccess.EntityFramework
 		public DbSet<CategoryRecord> Categories { get; set; }
 		public DbSet<SourceRecord> Sources { get; set; }
 
-		public NameContext() : base("name=NameDatabase")
+		public NamesContext() : base("name=NameDatabase")
 		{
 		}
 
