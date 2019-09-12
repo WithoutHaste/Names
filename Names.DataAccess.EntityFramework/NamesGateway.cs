@@ -22,11 +22,19 @@ namespace Names.DataAccess.EntityFramework
 			}
 		}
 
-		public ICollection<string> GetNames()
+		public ICollection<NameRecord> GetNames()
 		{
 			using(NamesContext context = new NamesContext())
 			{
-				return context.Names.Select(n => n.Name).OrderBy(n => n).ToList();
+				return context.Names.ToList();
+			}
+		}
+
+		public ICollection<NameRecord> GetNamesWithDetails()
+		{
+			using(NamesContext context = new NamesContext())
+			{
+				return context.Names.Include("Details").ToList();
 			}
 		}
 	}

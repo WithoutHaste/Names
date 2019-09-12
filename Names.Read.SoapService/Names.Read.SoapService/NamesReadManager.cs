@@ -8,6 +8,7 @@ using System.Text;
 using Names.DataAccess.EntityFramework;
 using Names.Domain;
 using Names.Read.SoapService.Contracts;
+using Names.Read.UseCases;
 
 namespace Names.Read.SoapService
 {
@@ -28,9 +29,12 @@ namespace Names.Read.SoapService
 			return NamesGateway.TestDataStoreConnection();
 		}
 
-		public ICollection<string> GetNames()
+		public ICollection<NameResponse> GetDetailedNames()
 		{
-			return NamesGateway.GetNames();
+			return GetDetailedNamesAlphabetized.Execute(NamesGateway).Select(output => new NameResponse() {
+				Name = output.Name,
+				Origins = output.Origins
+			}).ToList();
 		}
 	}
 }

@@ -1,16 +1,18 @@
-﻿@model ICollection<string>
+﻿@using Names.Read.MvcSite.Models.Home
+@model List<IndexModel>
 @{
     ViewBag.Title = "Home Page";
 }
 
 <div>
 	<h2>Find Names</h2>
-	<i>An open-source project available on <a href="https://github.com/WithoutHaste/Names">GitHub</a>.</i>
+	<i>An open-source project available on <a href="https://github.com/WithoutHaste/Names">GitHub</a>.  Uses Entity Framework, WCF, and ASP.Net MVC.</i>
 </div>
+<br/>
 
 <div>
-	@foreach(string name in Model)
+	@foreach(IndexModel name in Model)
 	{
-		@name<br/>
+		@name.Name <i>@name.OriginText</i><br/>
 	}
 </div>

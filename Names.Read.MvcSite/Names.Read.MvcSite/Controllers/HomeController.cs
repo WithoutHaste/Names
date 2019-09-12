@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Names.Read.MvcSite.ServiceClients;
+using Names.Read.SoapService.Contracts;
+using Names.Read.MvcSite.Models.Home;
 
 namespace Names.Read.MvcSite.Controllers
 {
@@ -12,24 +14,13 @@ namespace Names.Read.MvcSite.Controllers
 		public ActionResult Index()
 		{
 			NameClient nameClient = new NameClient();
-			ICollection<string> names = nameClient.GetNames();
+			List<IndexModel> model = nameClient.GetDetailedNames().Select(response => new IndexModel() {
+				Name = response.Name,
+				OriginText = String.Join(", ", response.Origins)
+			}).ToList();
 			nameClient.Close();
 
-			return View("Index", names);
-		}
-
-		public ActionResult About()
-		{
-			ViewBag.Message = "Your application description page.";
-
-			return View();
-		}
-
-		public ActionResult Contact()
-		{
-			ViewBag.Message = "Your contact page.";
-
-			return View();
+			return View("Index", model);
 		}
 	}
 }

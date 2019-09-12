@@ -4,16 +4,16 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Names.Read.SoapService.Contracts
 {
-	[ServiceContract]
-	public interface INamesReadService
+	[DataContract]
+	public class NameResponse
 	{
-		[OperationContract]
-		string TestDataStoreConnection();
-
-		[OperationContract]
-		ICollection<NameResponse> GetDetailedNames();
+		[DataMember]
+		public string Name { get; set; }
+		[DataMember]
+		public ICollection<string> Origins { get; set; }
 	}
 }

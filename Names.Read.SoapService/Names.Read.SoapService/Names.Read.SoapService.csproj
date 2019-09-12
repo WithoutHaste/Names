@@ -126,6 +126,10 @@
       <Project>{d7a93245-4b7c-4271-ad9f-4086a8d915b4}</Project>
       <Name>NameContracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Names.Read.UseCases\Names.Read.UseCases.csproj">
+      <Project>{7e6aaa04-8c4d-4c2b-9455-8bee49a5a908}</Project>
+      <Name>Names.Read.UseCases</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
