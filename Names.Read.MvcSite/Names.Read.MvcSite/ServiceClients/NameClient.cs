@@ -18,9 +18,9 @@ namespace Names.Read.MvcSite.ServiceClients
 			return Channel.TestDataStoreConnection();
 		}
 
-		public ICollection<NameResponse> GetDetailedNames()
+		public ICollection<NameResponse> GetDetailedNames(string origin)
 		{
-			return Channel.GetDetailedNames();
+			return Channel.GetDetailedNames(origin);
 		}
 	}
 }

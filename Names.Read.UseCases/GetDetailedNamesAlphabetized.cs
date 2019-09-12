@@ -10,11 +10,11 @@ namespace Names.Read.UseCases
 {
     public static class GetDetailedNamesAlphabetized
     {
-		public static ICollection<NameOutput> Execute(INamesGateway gateway)
+		public static ICollection<NameOutput> Execute(INamesGateway gateway, string origin)
 		{
-			return gateway.GetNamesWithDetails().Select(record => new NameOutput() {
-				Name = record.Name,
-				Origins = record.Details.Select(detail => detail.Origin).Distinct().ToList()
+			return gateway.GetNamesWithDetails(origin).GroupBy(record => record.Name).Select(group => new NameOutput() {
+				Name = group.Key,
+				Origins = group.Select(detail => detail.Origin).Distinct().ToList()
 			}).OrderBy(output => output.Name).ToList();
 		}
     }

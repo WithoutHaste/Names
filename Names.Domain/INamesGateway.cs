@@ -18,13 +18,9 @@ namespace Names.Domain
 		string TestDataStoreConnection();
 
 		/// <summary>
-		/// Returns all first names.
+		/// Returns first names, with details.
 		/// </summary>
-		ICollection<NameRecord> GetNames();
-
-		/// <summary>
-		/// Returns all first names, with details.
-		/// </summary>
-		ICollection<NameRecord> GetNamesWithDetails();
+		/// <param name="origin">Set to NULL for "all", or to one Category. Each Category includes all subcategories.</param>
+		ICollection<NameWithDetailResult> GetNamesWithDetails(string origin);
 	}
 }

@@ -29,9 +29,9 @@ namespace Names.Read.SoapService
 			return NamesGateway.TestDataStoreConnection();
 		}
 
-		public ICollection<NameResponse> GetDetailedNames()
+		public ICollection<NameResponse> GetDetailedNames(string origin)
 		{
-			return GetDetailedNamesAlphabetized.Execute(NamesGateway).Select(output => new NameResponse() {
+			return GetDetailedNamesAlphabetized.Execute(NamesGateway, origin).Select(output => new NameResponse() {
 				Name = output.Name,
 				Origins = output.Origins
 			}).ToList();

@@ -14,7 +14,7 @@ namespace Names.Read.MvcSite.Controllers
 		public ActionResult Index()
 		{
 			NameClient nameClient = new NameClient();
-			List<IndexModel> model = nameClient.GetDetailedNames().Select(response => new IndexModel() {
+			List<IndexModel> model = nameClient.GetDetailedNames("English").Select(response => new IndexModel() {
 				Name = response.Name,
 				OriginText = String.Join(", ", response.Origins)
 			}).ToList();

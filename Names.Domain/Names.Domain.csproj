@@ -44,6 +44,7 @@
     <Compile Include="Entities\CategoryRecord.cs" />
     <Compile Include="Entities\NameRecord.cs" />
     <Compile Include="Entities\NameDetailRecord.cs" />
+    <Compile Include="Entities\NameWithDetailResult.cs" />
     <Compile Include="Entities\NickNameRecord.cs" />
     <Compile Include="INamesGateway.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

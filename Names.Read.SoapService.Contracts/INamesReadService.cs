@@ -10,10 +10,17 @@ namespace Names.Read.SoapService.Contracts
 	[ServiceContract]
 	public interface INamesReadService
 	{
+		/// <summary>
+		/// Minimum end to end test that pulls some data from the database.
+		/// </summary>
 		[OperationContract]
 		string TestDataStoreConnection();
 
+		/// <summary>
+		/// Returns alphabetized names.
+		/// </summary>
+		/// <param name="origin">Set to NULL for "all", or to one Category. Each Category includes all subcategories.</param>
 		[OperationContract]
-		ICollection<NameResponse> GetDetailedNames();
+		ICollection<NameResponse> GetDetailedNames(string origin);
 	}
 }

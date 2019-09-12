@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Core.Objects;
+using System.Data.Entity.Infrastructure;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,6 +33,13 @@ namespace Names.DataAccess.EntityFramework
 				.Add(new SourceConfiguration())
 				;
 			base.OnModelCreating(modelBuilder);
+		}
+
+		public List<NameWithDetailResult> GetNamesByOrigin(string origin)
+		{
+			SqlParameter originParameter = String.IsNullOrEmpty(origin) ? new SqlParameter("Origin", typeof(string)) : new SqlParameter("Origin", origin);
+
+			return Database.SqlQuery<NameWithDetailResult>("exec GetNamesByOrigin @Origin", originParameter).ToList<NameWithDetailResult>();
 		}
 	}
 }
