@@ -40,7 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\CategoryOutput.cs" />
     <Compile Include="Data\NameOutput.cs" />
+    <Compile Include="GetCategoryTree.cs" />
     <Compile Include="GetDetailedNamesAlphabetized.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

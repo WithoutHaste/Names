@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Names.DataAccess.EntityFram
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Names.Read.UseCases", "..\Names.Read.UseCases\Names.Read.UseCases.csproj", "{7E6AAA04-8C4D-4C2B-9455-8BEE49A5A908}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Names.Read.UseCases.Test", "..\Names.Read.UseCases.Test\Names.Read.UseCases.Test.csproj", "{6352CF1A-98E8-47B1-B9FA-E7D68B1AA80D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{7E6AAA04-8C4D-4C2B-9455-8BEE49A5A908}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E6AAA04-8C4D-4C2B-9455-8BEE49A5A908}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E6AAA04-8C4D-4C2B-9455-8BEE49A5A908}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6352CF1A-98E8-47B1-B9FA-E7D68B1AA80D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6352CF1A-98E8-47B1-B9FA-E7D68B1AA80D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6352CF1A-98E8-47B1-B9FA-E7D68B1AA80D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6352CF1A-98E8-47B1-B9FA-E7D68B1AA80D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

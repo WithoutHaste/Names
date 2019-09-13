@@ -22,5 +22,10 @@ namespace Names.Domain
 		/// </summary>
 		/// <param name="origin">Set to NULL for "all", or to one Category. Each Category includes all subcategories.</param>
 		ICollection<NameWithDetailResult> GetNamesWithDetails(string origin);
+
+		/// <summary>
+		/// Returns all categories.
+		/// </summary>
+		ICollection<CategoryRecord> GetCategories();
 	}
 }

@@ -29,5 +29,13 @@ namespace Names.DataAccess.EntityFramework
 				return context.GetNamesByOrigin(origin).ToList();
 			}
 		}
+
+		public ICollection<CategoryRecord> GetCategories()
+		{
+			using(NamesContext context = new NamesContext())
+			{
+				return context.Categories.ToList();
+			}
+		}
 	}
 }

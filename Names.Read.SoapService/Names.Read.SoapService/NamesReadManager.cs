@@ -31,10 +31,12 @@ namespace Names.Read.SoapService
 
 		public ICollection<NameResponse> GetDetailedNames(string origin)
 		{
-			return GetDetailedNamesAlphabetized.Execute(NamesGateway, origin).Select(output => new NameResponse() {
-				Name = output.Name,
-				Origins = output.Origins
-			}).ToList();
+			return GetDetailedNamesAlphabetized.Execute(NamesGateway, origin).Select(output => Convert.NameOutputToResponse(output)).ToList();
+		}
+
+		public ICollection<CategoryResponse> GetCategories()
+		{
+			return GetCategoryTree.Execute(NamesGateway).Select(output => Convert.CategoryOutputToResponse(output)).ToList();
 		}
 	}
 }
