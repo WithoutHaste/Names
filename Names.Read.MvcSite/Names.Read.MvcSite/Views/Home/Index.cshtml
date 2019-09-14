@@ -31,6 +31,7 @@
 	</div>
 
 	<div class="search-results">
+		<span class="">@Model.NameCountMessage</span><br />
 		@foreach(NameModel name in Model.Names)
 		{
 			<span class="display-search-result"><span class="display-name">@name.Name</span><span class="display-origin">@name.OriginText</span></span><br />
