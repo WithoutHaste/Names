@@ -19,7 +19,7 @@ namespace Names.Read.SoapService.Contracts
 		/// <summary>
 		/// Returns alphabetized names.
 		/// </summary>
-		/// <param name="origin">Set to NULL for "all", or to one Category. Each Category includes all subcategories.</param>
+		/// <param name="origin">Set to NULL or "All" for "select all". Set to one Category. Each Category includes all subcategories.</param>
 		[OperationContract]
 		ICollection<NameResponse> GetDetailedNames(string origin);
 

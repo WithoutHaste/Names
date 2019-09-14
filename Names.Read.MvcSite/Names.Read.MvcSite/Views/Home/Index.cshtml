@@ -1,7 +1,7 @@
 ﻿@using Names.Read.MvcSite.Models.Home
 @model IndexModel
 @{
-    ViewBag.Title = "Home Page";
+	ViewBag.Title = "Home Page";
 }
 
 @helper Spacing(int depth)
@@ -20,7 +20,7 @@
 	<div class="category-menu">
 		@using(Html.BeginForm("Index", "Home", FormMethod.Get))
 		{
-			<button type="submit">Search</button><br/>
+			<button type="submit" id="submitSearch">Search</button><br/>
 			foreach(OriginModel origin in Model.Origins)
 			{
 				string checkedAttribute = origin.Checked ? "checked" : "";
@@ -30,12 +30,15 @@
 	</div>
 
 	<div class="search-results">
-		<span class="">@Model.NameCountMessage</span><br /><br />
-		@foreach(NameModel name in Model.Names)
-		{
-			<span class="display-search-result"><span class="display-name">@name.Name</span><span class="display-origin">@name.OriginText</span></span><br />
+		@{
+			if(Model.Search != null)
+			{
+				Html.RenderPartial("_Search", Model.Search);
+			}
 		}
 	</div>
 </div>
 
-
+@section scripts {
+	@Scripts.Render("~/Scripts/Home/Home.js")
+}

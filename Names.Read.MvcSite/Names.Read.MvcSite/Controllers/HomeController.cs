@@ -18,10 +18,26 @@ namespace Names.Read.MvcSite.Controllers
 
 			NameClient nameClient = new NameClient();
 			model.Categories = nameClient.GetCategories().Select(response => ConvertCategoryResponseToModel(response)).ToArray();
-			model.Names = nameClient.GetDetailedNames(origin).Select(response => ConvertNameResponseToModel(response)).ToArray();
+			if(!String.IsNullOrEmpty(origin))
+			{
+				model.Search = new SearchModel();
+				model.Search.Names = nameClient.GetDetailedNames(origin).Select(response => ConvertNameResponseToModel(response)).ToArray();
+			}
 			nameClient.Close();
 
 			return View("Index", model);
+		}
+
+		[AcceptVerbs(HttpVerbs.Post)]
+		public ActionResult Search(string origin = null)
+		{
+			SearchModel model = new SearchModel();
+
+			NameClient nameClient = new NameClient();
+			model.Names = nameClient.GetDetailedNames(origin).Select(response => ConvertNameResponseToModel(response)).ToArray();
+			nameClient.Close();
+
+			return View("_Search", model);
 		}
 
 		private NameModel ConvertNameResponseToModel(NameResponse response)

@@ -7,12 +7,12 @@ namespace Names.Read.MvcSite.Models.Home
 {
 	public class IndexModel
 	{
-		public NameModel[] Names { get; set; }
+		public SearchModel Search { get; set; }
 		public CategoryModel[] Categories {
 			set {
 				origins = new List<OriginModel>();
-				origins.Add(new OriginModel("", "All")); //if value is set to null, it defaults to "on" on the webpage
-				if(String.IsNullOrEmpty(selectedOrigin))
+				origins.Add(new OriginModel("All"));
+				if(String.IsNullOrEmpty(selectedOrigin) || selectedOrigin == "All")
 					origins[0].Checked = true;
 				ConvertCategoriesToOrigins(value);
 			}
@@ -22,12 +22,6 @@ namespace Names.Read.MvcSite.Models.Home
 		public OriginModel[] Origins { get { return origins.ToArray(); } }
 
 		private string selectedOrigin;
-
-		public string NameCountMessage {
-			get {
-				return String.Format("{0:n0} Name{1} Found", Names.Length, Names.Length == 1 ? "" : "s");
-			}
-		}
 
 		public IndexModel(string selectedOrigin)
 		{

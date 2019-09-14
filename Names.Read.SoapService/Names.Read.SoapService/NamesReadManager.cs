@@ -31,6 +31,8 @@ namespace Names.Read.SoapService
 
 		public ICollection<NameResponse> GetDetailedNames(string origin)
 		{
+			if(origin == "All")
+				origin = null;
 			return GetDetailedNamesAlphabetized.Execute(NamesGateway, origin).Select(output => Convert.NameOutputToResponse(output)).ToList();
 		}
 
