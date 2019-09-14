@@ -37,5 +37,13 @@ namespace Names.DataAccess.EntityFramework
 				return context.Categories.ToList();
 			}
 		}
+
+		public NameWithDetailResult[] GetAlphabetizedPagedNamesWithDetails(int pageIndex, int rowsPerPage)
+		{
+			using(NamesContext context = new NamesContext())
+			{
+				return context.GetPagedNames(pageIndex, rowsPerPage);
+			}
+		}
 	}
 }

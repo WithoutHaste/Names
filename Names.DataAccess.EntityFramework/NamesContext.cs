@@ -41,5 +41,13 @@ namespace Names.DataAccess.EntityFramework
 
 			return Database.SqlQuery<NameWithDetailResult>("exec GetNamesByOrigin @Origin", originParameter).ToList<NameWithDetailResult>();
 		}
+
+		public NameWithDetailResult[] GetPagedNames(int pageIndex, int rowsPerPage)
+		{
+			SqlParameter pageIndexParameter = new SqlParameter("pageIndex", pageIndex);
+			SqlParameter rowsPerPageParameter = new SqlParameter("rowsPerPage", rowsPerPage);
+
+			return Database.SqlQuery<NameWithDetailResult>("exec GetPagedNames @pageIndex, @rowsPerPage", pageIndexParameter, rowsPerPageParameter).ToArray<NameWithDetailResult>();
+		}
 	}
 }

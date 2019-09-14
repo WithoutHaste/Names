@@ -27,5 +27,13 @@ namespace Names.Domain
 		/// Returns all categories.
 		/// </summary>
 		ICollection<CategoryRecord> GetCategories();
+
+		/// <summary>
+		/// Returns 1 page of data, alphabetized, first names, with details.
+		/// </summary>
+		/// <param name="pageIndex">0-based index.</param>
+		/// <param name="rowsPerPage"></param>
+		/// <returns></returns>
+		NameWithDetailResult[] GetAlphabetizedPagedNamesWithDetails(int pageIndex, int rowsPerPage);
 	}
 }
