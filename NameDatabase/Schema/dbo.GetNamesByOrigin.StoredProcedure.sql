@@ -1,6 +1,6 @@
 USE [NameDatabase]
 GO
-/****** Object:  StoredProcedure [dbo].[GetNamesByOrigin]    Script Date: 9/14/2019 10:51:22 AM ******/
+/****** Object:  StoredProcedure [dbo].[GetNamesByOrigin]    Script Date: 9/14/2019 2:25:24 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -25,10 +25,13 @@ begin
 		inner join categoryCTE on Category.SuperCategory = categoryCTE.Category
 	)
 	select
-		Name.Id,
+		Name.Id as NameId,
 		Name.Name,
 		Name.FirstLetter,
-		NameDetail.Origin
+		Name.IsFamiliar,
+		NameDetail.Id as NameDetailId,
+		NameDetail.Origin,
+		NameDetail.Meaning
 	from dbo.Name
 	inner join dbo.NameDetail on NameDetail.NameId = Name.Id
 	where @origin is NULL or @origin = '' or NameDetail.Origin IN (SELECT Category from categoryCTE)
