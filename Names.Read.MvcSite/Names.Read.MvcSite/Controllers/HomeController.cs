@@ -13,14 +13,30 @@ namespace Names.Read.MvcSite.Controllers
 	{
 		public ActionResult Index()
 		{
+			IndexModel model = new IndexModel();
+
 			NameClient nameClient = new NameClient();
-			List<IndexModel> model = nameClient.GetDetailedNames("English").Select(response => new IndexModel() {
-				Name = response.Name,
-				OriginText = String.Join(", ", response.Origins)
-			}).ToList();
+			model.Categories = nameClient.GetCategories().Select(response => ConvertCategoryResponseToModel(response)).ToArray();
+			model.Names = nameClient.GetDetailedNames("English").Select(response => ConvertNameResponseToModel(response)).ToArray();
 			nameClient.Close();
 
 			return View("Index", model);
+		}
+
+		private NameModel ConvertNameResponseToModel(NameResponse response)
+		{
+			return new NameModel() {
+				Name = response.Name,
+				OriginText = String.Join(", ", response.Origins)
+			};
+		}
+
+		private CategoryModel ConvertCategoryResponseToModel(CategoryResponse response)
+		{
+			return new CategoryModel() {
+				Category = response.Category,
+				SubCategories = response.SubCategories.Select(sub => ConvertCategoryResponseToModel(sub)).ToArray()
+			};
 		}
 	}
 }

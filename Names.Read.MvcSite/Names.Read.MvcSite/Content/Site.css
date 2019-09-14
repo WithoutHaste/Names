@@ -22,3 +22,34 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/* grid layout */
+.container {
+	display: grid;
+	grid-template-columns: 11em auto;
+	grid-template-rows: 9em auto;
+}
+
+/* big title bar at top of page */
+.title-bar {
+	grid-column-start: 1;
+	grid-column-end: end;
+	grid-row-start: 1;
+	grid-row-end: 2;
+}
+
+/* left-hand menu for categories/origins */
+.category-menu {
+	grid-column-start: 1;
+	grid-column-end: 2;
+	grid-row-start: 2;
+	grid-row-end: end;
+}
+
+/* list of search results */
+.name-results {
+	grid-column-start: 2;
+	grid-column-end: end;
+	grid-row-start: 2;
+	grid-row-end: end;
+}

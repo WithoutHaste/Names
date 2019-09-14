@@ -5,9 +5,9 @@ using System.Web;
 
 namespace Names.Read.MvcSite.Models.Home
 {
-	public class IndexModel
+	public class CategoryModel
 	{
-		public NameModel[] Names { get; set; }
-		public CategoryModel[] Categories { get; set; }
+		public string Category { get; set; }
+		public CategoryModel[] SubCategories { get; set; }
 	}
 }

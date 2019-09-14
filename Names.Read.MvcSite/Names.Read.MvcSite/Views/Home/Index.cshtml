@@ -1,18 +1,52 @@
 ﻿@using Names.Read.MvcSite.Models.Home
-@model List<IndexModel>
+@model IndexModel
 @{
     ViewBag.Title = "Home Page";
 }
 
-<div>
-	<h2>Find Names</h2>
-	<i>An open-source project available on <a href="https://github.com/WithoutHaste/Names">GitHub</a>.  Uses Entity Framework, WCF, and ASP.Net MVC.</i>
-</div>
-<br/>
-
-<div>
-	@foreach(IndexModel name in Model)
+@helper DisplayCategories(CategoryModel[] categories, int depth)
+{
+	if(categories == null)
 	{
-		@name.Name <i>@name.OriginText</i><br/>
+		return;
 	}
+	foreach(CategoryModel category in categories)
+	{
+		@DisplayCategory(category, depth);
+	}
+}
+
+@helper DisplayCategory(CategoryModel category, int depth)
+{
+	<span><input type="radio" name="category" value="@category.Category" /> @Spacing(depth)@category.Category</span><br />
+	@DisplayCategories(category.SubCategories, depth + 1);
+}
+
+@helper Spacing(int depth)
+{
+	for(int i = 0; i < depth; i++)
+	{
+		@:&nbsp;&nbsp;
+	}
+}
+
+<div class="container">
+	<div class="title-bar">
+		<h2>Find Names</h2>
+		<i>An open-source project available on <a href="https://github.com/WithoutHaste/Names">GitHub</a>.  Uses Entity Framework, WCF, and ASP.Net MVC.</i>
+	</div>
+
+	<div class="category-menu">
+		<span><input type="radio" name="category" value="" checked /> All</span><br />
+		@DisplayCategories(Model.Categories, 0)
+	</div>
+
+	<div class="name-results">
+		@foreach(NameModel name in Model.Names)
+		{
+			@name.Name <i>@name.OriginText</i><br />
+		}
+	</div>
 </div>
+
+

@@ -22,5 +22,10 @@ namespace Names.Read.MvcSite.ServiceClients
 		{
 			return Channel.GetDetailedNames(origin);
 		}
+
+		public ICollection<CategoryResponse> GetCategories()
+		{
+			return Channel.GetCategories();
+		}
 	}
 }
