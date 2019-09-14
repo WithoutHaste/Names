@@ -11,13 +11,14 @@ namespace Names.Read.MvcSite.Controllers
 {
 	public class HomeController : Controller
 	{
-		public ActionResult Index()
+		[AcceptVerbs(HttpVerbs.Get)]
+		public ActionResult Index(string origin=null)
 		{
-			IndexModel model = new IndexModel();
+			IndexModel model = new IndexModel(origin);
 
 			NameClient nameClient = new NameClient();
 			model.Categories = nameClient.GetCategories().Select(response => ConvertCategoryResponseToModel(response)).ToArray();
-			model.Names = nameClient.GetDetailedNames("English").Select(response => ConvertNameResponseToModel(response)).ToArray();
+			model.Names = nameClient.GetDetailedNames(origin).Select(response => ConvertNameResponseToModel(response)).ToArray();
 			nameClient.Close();
 
 			return View("Index", model);

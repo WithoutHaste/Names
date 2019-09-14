@@ -37,7 +37,7 @@ namespace Names.DataAccess.EntityFramework
 
 		public List<NameWithDetailResult> GetNamesByOrigin(string origin)
 		{
-			SqlParameter originParameter = String.IsNullOrEmpty(origin) ? new SqlParameter("Origin", typeof(string)) : new SqlParameter("Origin", origin);
+			SqlParameter originParameter = new SqlParameter("Origin", (object)origin ?? DBNull.Value);
 
 			return Database.SqlQuery<NameWithDetailResult>("exec GetNamesByOrigin @Origin", originParameter).ToList<NameWithDetailResult>();
 		}

@@ -1,19 +1,6 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
-
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+	width: 100%;
+	background-color: #f4f7d2; /* pale yellow */
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -24,9 +11,9 @@ textarea {
 }
 
 /* grid layout */
-.container {
+.grid-container {
 	display: grid;
-	grid-template-columns: 11em auto;
+	grid-template-columns: 11em 30em;
 	grid-template-rows: 9em auto;
 }
 
@@ -36,6 +23,34 @@ textarea {
 	grid-column-end: end;
 	grid-row-start: 1;
 	grid-row-end: 2;
+
+	background-color: #163317; /*dark forest green*/
+	color: #FFFFFF; /* white */
+    padding-left: 15px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	margin-bottom: 15px;
+	font-size: 44px;
+}
+
+.title-bar .subtext {
+	font-size: 18px;
+	font-style: italic;
+}
+
+.title-bar .subtext a {
+	color: #47A54A; /* medium forest green */
+}
+
+button {
+	background-color: #163317; /*dark forest green*/
+	color: #FFFFFF; /* white */
+	border: 1px solid black;
+	font-size: 16px;
+}
+button:hover {
+	background-color: #47A54A; /* medium forest green */
+	cursor: pointer;
 }
 
 /* left-hand menu for categories/origins */
@@ -47,9 +62,23 @@ textarea {
 }
 
 /* list of search results */
-.name-results {
+.search-results {
 	grid-column-start: 2;
 	grid-column-end: end;
 	grid-row-start: 2;
 	grid-row-end: end;
+}
+
+.display-search-result:hover {
+	background-color: #f6f7a3;
+	cursor: pointer;
+}
+
+.display-name {
+	display: inline-block;
+	width: 11em;
+}
+
+.display-origin {
+	font-style: italic;
 }

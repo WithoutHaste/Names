@@ -4,24 +4,6 @@
     ViewBag.Title = "Home Page";
 }
 
-@helper DisplayCategories(CategoryModel[] categories, int depth)
-{
-	if(categories == null)
-	{
-		return;
-	}
-	foreach(CategoryModel category in categories)
-	{
-		@DisplayCategory(category, depth);
-	}
-}
-
-@helper DisplayCategory(CategoryModel category, int depth)
-{
-	<span><input type="radio" name="category" value="@category.Category" /> @Spacing(depth)@category.Category</span><br />
-	@DisplayCategories(category.SubCategories, depth + 1);
-}
-
 @helper Spacing(int depth)
 {
 	for(int i = 0; i < depth; i++)
@@ -30,21 +12,28 @@
 	}
 }
 
-<div class="container">
+<div class="grid-container">
 	<div class="title-bar">
-		<h2>Find Names</h2>
-		<i>An open-source project available on <a href="https://github.com/WithoutHaste/Names">GitHub</a>.  Uses Entity Framework, WCF, and ASP.Net MVC.</i>
+		Find Names<br/>
+		<span class="subtext">An open-source project available on <a href="https://github.com/WithoutHaste/Names">GitHub</a> as a demo of Entity Framework, WCF, and ASP.Net MVC.</span>
 	</div>
 
 	<div class="category-menu">
-		<span><input type="radio" name="category" value="" checked /> All</span><br />
-		@DisplayCategories(Model.Categories, 0)
+		@using(Html.BeginForm("Index", "Home", FormMethod.Get))
+		{
+			<button type="submit">Refresh Names</button><br/>
+			foreach(OriginModel origin in Model.Origins)
+			{
+				string checkedAttribute = origin.Checked ? "checked" : "";
+				<span><input type="radio" name="origin" value="@origin.Value" @checkedAttribute /> @Spacing(origin.Depth)@origin.Text</span><br />
+			}
+		}
 	</div>
 
-	<div class="name-results">
+	<div class="search-results">
 		@foreach(NameModel name in Model.Names)
 		{
-			@name.Name <i>@name.OriginText</i><br />
+			<span class="display-search-result"><span class="display-name">@name.Name</span><span class="display-origin">@name.OriginText</span></span><br />
 		}
 	</div>
 </div>
