@@ -1,8 +1,5 @@
-﻿@using Names.Edit.SoapService.Contracts
-@model NameDetailResponse[]
-@{
-    ViewBag.Title = "Home Page";
-}
+﻿@using Names.Edit.MvcSite.Models.Home
+@model IndexModel
 
 <div class="jumbotron">
     <h1>ASP.NET</h1>
@@ -10,9 +7,55 @@
     <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 </div>
 
-<div>
-	@foreach(NameDetailResponse response in Model)
+@helper PreviousPage(int pageIndex, int rowsPerPage)
+{
+	if(pageIndex <= 0)
 	{
-		@response.Name<br/>
+		return;
 	}
+	using(Html.BeginForm("Index", "Home", FormMethod.Get))
+	{
+		<input type="hidden" name="pageIndex" value="@(pageIndex - 1)" />
+		<input type="hidden" name="rowsPerPage" value="@rowsPerPage" />
+		<input type="submit" value="Previous Page" />
+	}
+}
+
+@helper NextPage(int pageIndex, int rowsPerPage)
+{
+	using(Html.BeginForm("Index", "Home", FormMethod.Get))
+	{
+		<input type="hidden" name="pageIndex" value="@(pageIndex + 1)" />
+		<input type="hidden" name="rowsPerPage" value="@rowsPerPage" />
+		<input type="submit" value="Next Page" />
+	}
+}
+
+<div>
+	<table>
+		<tr>
+			<td>@PreviousPage(Model.PageIndex, Model.RowsPerPage)</td>
+			<td>Page @Model.PageIndex, @Model.RowsPerPage Rows Per Page</td>
+			<td>@NextPage(Model.PageIndex, Model.RowsPerPage)</td>
+		</tr>
+	</table>
+</div>
+
+<div>
+@using(Html.BeginForm("Save", "Home", FormMethod.Post))
+{
+	<table>
+	@foreach(NameDetail detail in Model.NameDetails)
+	{
+		<tr>
+			<td>@detail.NameId</td>
+			<td>@detail.Name</td>
+			<td><input type="hidden" name="NameDetailId" value="@detail.NameDetailId" /></td>
+			<td>@detail.NameDetailId</td>
+			<td><input type="text" name="Origin" value="@detail.Origin" size="30" /></td>
+			<td><input type="text" name="Meaning" value="@detail.Meaning" size="80" /></td>
+		</tr>
+	}
+	</table>
+}
 </div>
