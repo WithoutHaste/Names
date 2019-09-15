@@ -44,18 +44,24 @@
 <div>
 @using(Html.BeginForm("Save", "Home", FormMethod.Post))
 {
+	int i = 0;
 	<table>
 	@foreach(NameDetail detail in Model.NameDetails)
 	{
 		<tr>
 			<td>@detail.NameId</td>
 			<td>@detail.Name</td>
-			<td><input type="hidden" name="NameDetailId" value="@detail.NameDetailId" /></td>
+			<td><input type="hidden" name="[@i].NameDetailId" value="@detail.NameDetailId" /></td>
 			<td>@detail.NameDetailId</td>
-			<td><input type="text" name="Origin" value="@detail.Origin" size="30" /></td>
-			<td><input type="text" name="Meaning" value="@detail.Meaning" size="80" /></td>
+			<td><input type="text" name="[@i].Origin" value="@detail.Origin" size="30" /></td>
+			<td><input type="text" name="[@i].Meaning" value="@detail.Meaning" size="80" /></td>
+			<td><input type="checkbox" name="[@i].IsEdited" /> Edited</td>
 		</tr>
+		i++;
 	}
 	</table>
+	<input type="hidden" name="pageIndex" value="@Model.PageIndex" />
+	<input type="hidden" name="rowsPerPage" value="@Model.RowsPerPage" />
+	<input type="submit" value="Save Changes" />
 }
 </div>

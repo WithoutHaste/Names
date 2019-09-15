@@ -192,6 +192,7 @@
     <Compile Include="Models\Home\EditNameDetail.cs" />
     <Compile Include="Models\Home\IndexModel.cs" />
     <Compile Include="Models\Home\NameDetail.cs" />
+    <Compile Include="Models\ModelBinders\MultipleNameDetailsBinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceClients\NameClient.cs" />
     <Compile Include="Startup.cs" />
