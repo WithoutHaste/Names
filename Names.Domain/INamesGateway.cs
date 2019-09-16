@@ -35,5 +35,11 @@ namespace Names.Domain
 		/// <param name="rowsPerPage"></param>
 		/// <returns></returns>
 		NameWithDetailResult[] GetAlphabetizedPagedNamesWithDetails(int pageIndex, int rowsPerPage);
+
+		/// <summary>
+		/// Batch edit of NameDetailRecords.
+		/// </summary>
+		/// <param name="editRequests"></param>
+		void EditNameDetails(EditNameDetailRequest[] editRequests);
 	}
 }

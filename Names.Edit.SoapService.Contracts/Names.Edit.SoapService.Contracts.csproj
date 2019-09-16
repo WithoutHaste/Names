@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EditNameDetailRequest.cs" />
     <Compile Include="INamesEditService.cs" />
     <Compile Include="NameDetailResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

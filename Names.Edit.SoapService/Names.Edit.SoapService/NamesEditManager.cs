@@ -8,6 +8,7 @@ using Names.DataAccess.EntityFramework;
 using Names.Domain;
 using Names.Edit.SoapService.Contracts;
 using Names.Edit.UseCases;
+using Names.Edit.UseCases.Data;
 
 namespace Names.Edit.SoapService
 {
@@ -34,6 +35,16 @@ namespace Names.Edit.SoapService
 				Origin = output.Origin,
 				Meaning = output.Meaning
 			}).ToArray();
+		}
+
+		[OperationBehavior(TransactionScopeRequired=true)]
+		public void EditNameDetails(EditNameDetailRequest[] editRequests)
+		{
+			UseCases.EditNameDetails.Execute(NamesGateway, editRequests.Select(request => new EditNameDetailInput() {
+				NameDetailId = request.NameDetailId,
+				Origin = request.Origin,
+				Meaning = request.Meaning
+			}).ToArray());
 		}
 	}
 }

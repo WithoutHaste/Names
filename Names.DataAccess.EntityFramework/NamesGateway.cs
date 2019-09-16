@@ -45,5 +45,21 @@ namespace Names.DataAccess.EntityFramework
 				return context.GetPagedNames(pageIndex, rowsPerPage);
 			}
 		}
+
+		public void EditNameDetails(EditNameDetailRequest[] editRequests)
+		{
+			int[] ids = editRequests.Select(request => request.NameDetailId).ToArray();
+			using(NamesContext context = new NamesContext())
+			{
+				NameDetailRecord[] records = context.NameDetails.Where(record => ids.Contains(record.Id)).ToArray();
+				foreach(NameDetailRecord record in records)
+				{
+					EditNameDetailRequest request = editRequests.First(r => r.NameDetailId == record.Id);
+					record.Origin = request.Origin;
+					record.Meaning = request.Meaning;
+				}
+				context.SaveChanges();
+			}
+		}
 	}
 }

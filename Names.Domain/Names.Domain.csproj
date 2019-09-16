@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\CategoryRecord.cs" />
+    <Compile Include="Entities\EditNameDetailRequest.cs" />
     <Compile Include="Entities\NameRecord.cs" />
     <Compile Include="Entities\NameDetailRecord.cs" />
     <Compile Include="Entities\NameWithDetailResult.cs" />

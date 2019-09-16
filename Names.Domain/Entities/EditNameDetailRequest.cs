@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Names.Edit.MvcSite.Models.Home
+namespace Names.Domain.Entities
 {
-	public class EditNameDetail
+	public class EditNameDetailRequest
 	{
 		public int NameDetailId { get; set; }
 		public string Origin { get; set; }

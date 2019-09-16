@@ -33,6 +33,14 @@ namespace Names.Edit.MvcSite.Controllers
 		[AcceptVerbs(HttpVerbs.Post)]
 		public ActionResult Save([ModelBinder(typeof(MultipleNameDetailsBinder))]EditNameDetail[] edits, int pageIndex, int rowsPerPage)
 		{
+			NameClient client = new NameClient();
+			client.EditNameDetails(edits.Select(edit => new EditNameDetailRequest() {
+				NameDetailId = edit.NameDetailId,
+				Origin = edit.Origin,
+				Meaning = edit.Meaning
+			}).ToArray());
+			client.Close();
+
 			return RedirectToAction("Index", new { pageIndex = pageIndex, rowsPerPage = rowsPerPage });
 		}
 	}

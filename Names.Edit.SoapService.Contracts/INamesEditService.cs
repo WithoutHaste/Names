@@ -18,5 +18,13 @@ namespace Names.Edit.SoapService.Contracts
 		/// <returns></returns>
 		[OperationContract]
 		NameDetailResponse[] GetPagedNames(int pageIndex, int rowsPerPage);
+
+		/// <summary>
+		/// Batch update of NameDetailRecords. Transaction based.
+		/// </summary>
+		/// <param name="editRequests"></param>
+		[OperationContract]
+		[TransactionFlow(TransactionFlowOption.Allowed)]
+		void EditNameDetails(EditNameDetailRequest[] editRequests);
     }
 }

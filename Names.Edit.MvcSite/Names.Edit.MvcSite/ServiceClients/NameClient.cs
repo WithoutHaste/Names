@@ -17,5 +17,10 @@ namespace Names.Edit.MvcSite.ServiceClients
 		{
 			return Channel.GetPagedNames(pageIndex, rowsPerPage);
 		}
+
+		public void EditNameDetails(EditNameDetailRequest[] editRequests)
+		{
+			Channel.EditNameDetails(editRequests);
+		}
 	}
 }
