@@ -26,12 +26,14 @@ namespace Names.Edit.MvcSite.Models.ModelBinders
 				string origin = (string)bindingContext.ValueProvider.GetValue(prefix + "Origin").ConvertTo(typeof(string));
 				string meaning = (string)bindingContext.ValueProvider.GetValue(prefix + "Meaning").ConvertTo(typeof(string));
 				string isEdited = LoadOptionalString(bindingContext, prefix + "IsEdited");
-				if(isEdited == "on")
+				string isDeleted = LoadOptionalString(bindingContext, prefix + "IsDeleted");
+				if(isEdited == "on" || isDeleted == "on")
 				{
 					results.Add(new EditNameDetail() {
 						NameDetailId = id.Value,
 						Origin = origin,
-						Meaning = meaning
+						Meaning = meaning,
+						IsDeleted = (isDeleted == "on")
 					});
 				}
 				i++;

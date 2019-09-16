@@ -16,7 +16,8 @@ namespace Names.Edit.UseCases
 			gateway.EditNameDetails(editInputs.Select(input => new EditNameDetailRequest() {
 				NameDetailId = input.NameDetailId,
 				Origin = input.Origin,
-				Meaning = input.Meaning
+				Meaning = input.Meaning,
+				IsDeleted = input.IsDeleted
 			}).ToArray());
 		}
 	}

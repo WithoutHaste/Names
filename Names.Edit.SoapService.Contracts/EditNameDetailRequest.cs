@@ -16,5 +16,7 @@ namespace Names.Edit.SoapService.Contracts
 		public string Origin { get; set; }
 		[DataMember]
 		public string Meaning { get; set; }
+		[DataMember]
+		public bool IsDeleted { get; set; }
 	}
 }

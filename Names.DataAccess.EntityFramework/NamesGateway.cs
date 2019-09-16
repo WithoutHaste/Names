@@ -57,8 +57,15 @@ namespace Names.DataAccess.EntityFramework
 				foreach(NameDetailRecord record in records)
 				{
 					EditNameDetailRequest request = editRequests.First(r => r.NameDetailId == record.Id);
-					record.Origin = request.Origin;
-					record.Meaning = request.Meaning;
+					if(request.IsDeleted)
+					{
+						context.NameDetails.Remove(record);
+					}
+					else
+					{
+						record.Origin = request.Origin;
+						record.Meaning = request.Meaning;
+					}
 				}
 				context.SaveChanges();
 			}

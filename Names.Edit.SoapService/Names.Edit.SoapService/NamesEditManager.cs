@@ -43,7 +43,8 @@ namespace Names.Edit.SoapService
 			UseCases.EditNameDetails.Execute(NamesGateway, editRequests.Select(request => new EditNameDetailInput() {
 				NameDetailId = request.NameDetailId,
 				Origin = request.Origin,
-				Meaning = request.Meaning
+				Meaning = request.Meaning,
+				IsDeleted = request.IsDeleted
 			}).ToArray());
 		}
 

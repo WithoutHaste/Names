@@ -11,5 +11,6 @@ namespace Names.Edit.UseCases.Data
 		public int NameDetailId { get; set; }
 		public string Origin { get; set; }
 		public string Meaning { get; set; }
+		public bool IsDeleted { get; set; }
 	}
 }

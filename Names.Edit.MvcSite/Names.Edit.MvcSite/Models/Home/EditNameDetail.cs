@@ -10,5 +10,6 @@ namespace Names.Edit.MvcSite.Models.Home
 		public int NameDetailId { get; set; }
 		public string Origin { get; set; }
 		public string Meaning { get; set; }
+		public bool IsDeleted { get; set; }
 	}
 }

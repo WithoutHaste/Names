@@ -37,7 +37,8 @@ namespace Names.Edit.MvcSite.Controllers
 			client.EditNameDetails(edits.Select(edit => new EditNameDetailRequest() {
 				NameDetailId = edit.NameDetailId,
 				Origin = edit.Origin,
-				Meaning = edit.Meaning
+				Meaning = edit.Meaning,
+				IsDeleted = edit.IsDeleted
 			}).ToArray());
 			client.Close();
 
