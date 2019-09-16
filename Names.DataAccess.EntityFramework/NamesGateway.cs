@@ -63,6 +63,26 @@ namespace Names.DataAccess.EntityFramework
 					}
 					else
 					{
+						if(request.Origin.Contains(","))
+						{
+							string[] origins = request.Origin.Split(',');
+							request.Origin = origins[0].Trim();
+							for(int i = 1; i < origins.Length; i++)
+							{
+								NameDetailRecord newRecord = new NameDetailRecord() {
+									NameId = record.NameId,
+									SourceId = record.SourceId,
+									IsBoy = record.IsBoy,
+									IsGirl = record.IsGirl,
+									IsFirstName = record.IsFirstName,
+									IsLastName = record.IsLastName,
+									Origin = origins[i].Trim(),
+									Meaning = request.Meaning,
+									CreateDateTime = record.CreateDateTime
+								};
+								context.NameDetails.Add(newRecord);
+							}
+						}
 						record.Origin = request.Origin;
 						record.Meaning = request.Meaning;
 					}

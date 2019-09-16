@@ -38,6 +38,7 @@ namespace Names.Domain
 
 		/// <summary>
 		/// Batch edit of NameDetailRecords.
+		/// If there are commas in Origin, new NameDetail records will be created so each has just one origin.
 		/// </summary>
 		/// <param name="editRequests"></param>
 		void EditNameDetails(EditNameDetailRequest[] editRequests);
