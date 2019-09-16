@@ -22,5 +22,10 @@ namespace Names.Edit.MvcSite.ServiceClients
 		{
 			Channel.EditNameDetails(editRequests);
 		}
+
+		public SpellingResponse[] GetSpellings()
+		{
+			return Channel.GetSpellings();
+		}
 	}
 }

@@ -41,5 +41,11 @@ namespace Names.Domain
 		/// </summary>
 		/// <param name="editRequests"></param>
 		void EditNameDetails(EditNameDetailRequest[] editRequests);
+
+		/// <summary>
+		/// Returns all spellings, ordered by CommonName, with Names attached.
+		/// </summary>
+		/// <returns></returns>
+		SpellingRecord[] GetSpellings();
 	}
 }

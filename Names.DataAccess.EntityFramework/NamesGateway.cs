@@ -61,5 +61,16 @@ namespace Names.DataAccess.EntityFramework
 				context.SaveChanges();
 			}
 		}
+
+		public SpellingRecord[] GetSpellings()
+		{
+			using(NamesContext context = new NamesContext())
+			{
+				return context.Spellings.Include("CommonName").Include("VariationName")
+					.OrderBy(spelling => spelling.CommonName.Name)
+					.ThenBy(spelling => spelling.VariationName.Name)
+					.ToArray();
+			}
+		}
 	}
 }

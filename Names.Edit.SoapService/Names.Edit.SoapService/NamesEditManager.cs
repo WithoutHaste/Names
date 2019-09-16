@@ -46,5 +46,15 @@ namespace Names.Edit.SoapService
 				Meaning = request.Meaning
 			}).ToArray());
 		}
+
+		public SpellingResponse[] GetSpellings()
+		{
+			return UseCases.GetSpellings.Execute(NamesGateway).Select(output => new SpellingResponse() {
+				CommonNameId = output.CommonNameId,
+				CommonName = output.CommonName,
+				VariationNameId = output.VariationNameId,
+				VariationName = output.VariationName
+			}).ToArray();
+		}
 	}
 }

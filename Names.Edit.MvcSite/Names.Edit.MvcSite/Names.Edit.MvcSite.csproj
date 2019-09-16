@@ -186,6 +186,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SpellingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -193,6 +194,8 @@
     <Compile Include="Models\Home\IndexModel.cs" />
     <Compile Include="Models\Home\NameDetail.cs" />
     <Compile Include="Models\ModelBinders\MultipleNameDetailsBinder.cs" />
+    <Compile Include="Models\Spelling\AddAlternateSpelling.cs" />
+    <Compile Include="Models\Spelling\SpellingModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceClients\NameClient.cs" />
     <Compile Include="Startup.cs" />
@@ -230,6 +233,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Spelling\Index.cshtml" />
+    <Content Include="Views\Spelling\All.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

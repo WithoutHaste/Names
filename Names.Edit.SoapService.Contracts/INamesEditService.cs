@@ -26,5 +26,12 @@ namespace Names.Edit.SoapService.Contracts
 		[OperationContract]
 		[TransactionFlow(TransactionFlowOption.Allowed)]
 		void EditNameDetails(EditNameDetailRequest[] editRequests);
+
+		/// <summary>
+		/// Returns all spellings, ordered by CommonName then VariationName.
+		/// </summary>
+		/// <returns></returns>
+		[OperationContract]
+		SpellingResponse[] GetSpellings();
     }
 }

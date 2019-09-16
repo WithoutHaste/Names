@@ -1,0 +1,22 @@
+﻿@using Names.Edit.MvcSite.Models.Spelling;
+@model SpellingModel[]
+
+<h2>All Spellings</h2>
+
+<table>
+	<tr>
+		<th>Common Name Id</th>
+		<th>Common Name</th>
+		<th>Variation Name</th>
+		<th>Variation Name Id</th>
+	</tr>
+@foreach(SpellingModel spelling in Model)
+{
+	<tr>
+		<td>@spelling.CommonNameId</td>
+		<td>@spelling.CommonName</td>
+		<td>@spelling.VariationName</td>
+		<td>@spelling.VariationNameId</td>
+	</tr>
+}
+</table>
