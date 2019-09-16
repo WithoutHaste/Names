@@ -32,5 +32,15 @@ namespace Names.Edit.MvcSite.ServiceClients
 		{
 			Channel.AddSpelling(commonName, variationName);
 		}
+
+		public NickNameResponse[] GetNickNames()
+		{
+			return Channel.GetNickNames();
+		}
+
+		public void AddNickName(string fullName, string nickName)
+		{
+			Channel.AddNickName(fullName, nickName);
+		}
 	}
 }

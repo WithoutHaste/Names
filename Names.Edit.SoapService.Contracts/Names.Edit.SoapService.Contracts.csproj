@@ -45,6 +45,7 @@
     <Compile Include="EditNameDetailRequest.cs" />
     <Compile Include="INamesEditService.cs" />
     <Compile Include="NameDetailResponse.cs" />
+    <Compile Include="NickNameResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpellingResponse.cs" />
   </ItemGroup>

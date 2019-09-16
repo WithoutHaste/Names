@@ -41,5 +41,20 @@ namespace Names.Edit.SoapService.Contracts
 		/// <param name="variationName"></param>
 		[OperationContract]
 		void AddSpelling(string commonName, string variationName);
-    }
+
+		/// <summary>
+		/// Returns all nicknames, ordered by FullName then NickName.
+		/// </summary>
+		/// <returns></returns>
+		[OperationContract]
+		NickNameResponse[] GetNickNames();
+
+		/// <summary>
+		/// Add a nickname association between these names.
+		/// </summary>
+		/// <param name="fullName"></param>
+		/// <param name="nickName"></param>
+		[OperationContract]
+		void AddNickName(string fullName, string nickName);
+	}
 }

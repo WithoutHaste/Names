@@ -186,6 +186,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NickNameController.cs" />
     <Compile Include="Controllers\SpellingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -194,6 +195,8 @@
     <Compile Include="Models\Home\IndexModel.cs" />
     <Compile Include="Models\Home\NameDetail.cs" />
     <Compile Include="Models\ModelBinders\MultipleNameDetailsBinder.cs" />
+    <Compile Include="Models\NickName\AddNickName.cs" />
+    <Compile Include="Models\NickName\NickNameModel.cs" />
     <Compile Include="Models\Spelling\AddAlternateSpelling.cs" />
     <Compile Include="Models\Spelling\SpellingModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -235,6 +238,8 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Spelling\Index.cshtml" />
     <Content Include="Views\Spelling\All.cshtml" />
+    <Content Include="Views\NickName\Index.cshtml" />
+    <Content Include="Views\NickName\All.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

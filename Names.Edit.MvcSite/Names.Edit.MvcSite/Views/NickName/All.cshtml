@@ -1,0 +1,22 @@
+﻿@using Names.Edit.MvcSite.Models.NickName;
+@model NickNameModel[]
+
+<h2>All Nicknames</h2>
+
+<table>
+	<tr>
+		<th>Full Name Id</th>
+		<th>Full Name</th>
+		<th>Nick Name</th>
+		<th>Nick Name Id</th>
+	</tr>
+	@foreach(NickNameModel nickname in Model)
+	{
+		<tr>
+			<td>@nickname.FullNameId</td>
+			<td>@nickname.FullName</td>
+			<td>@nickname.NickName</td>
+			<td>@nickname.NickNameId</td>
+		</tr>
+	}
+</table>

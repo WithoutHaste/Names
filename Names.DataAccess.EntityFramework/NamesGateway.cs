@@ -106,5 +106,41 @@ namespace Names.DataAccess.EntityFramework
 				context.SaveChanges();
 			}
 		}
+
+		public NickNameRecord[] GetNickNames()
+		{
+			using(NamesContext context = new NamesContext())
+			{
+				return context.NickNames.Include("FullName").Include("NickName")
+					.OrderBy(nickname => nickname.FullName.Name)
+					.ThenBy(nickname => nickname.NickName.Name)
+					.ToArray();
+			}
+		}
+
+		public void AddNickName(string fullName, string nickName)
+		{
+			CultureInfo cultureInfo = Thread.CurrentThread.CurrentCulture;
+			TextInfo textInfo = cultureInfo.TextInfo;
+			fullName = textInfo.ToTitleCase(fullName);
+			nickName = textInfo.ToTitleCase(nickName);
+
+			using(NamesContext context = new NamesContext())
+			{
+				NameRecord fullNameRecord = context.Names.FirstOrDefault(name => name.Name == fullName);
+				NameRecord nickNameRecord = context.Names.FirstOrDefault(name => name.Name == nickName);
+				if(fullNameRecord == null)
+					throw new Exception("Full name not found.");
+				if(nickNameRecord == null)
+					throw new Exception("Nickname not found.");
+
+				NickNameRecord record = context.NickNames.FirstOrDefault(nickname => nickname.FullNameId == fullNameRecord.Id && nickname.NickNameId == nickNameRecord.Id);
+				if(record != null)
+					return;
+				record = new NickNameRecord() { FullNameId = fullNameRecord.Id, NickNameId = nickNameRecord.Id };
+				context.NickNames.Add(record);
+				context.SaveChanges();
+			}
+		}
 	}
 }

@@ -40,11 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddNickName.cs" />
     <Compile Include="AddSpelling.cs" />
     <Compile Include="Data\DetailedNameOutput.cs" />
     <Compile Include="Data\EditNameDetailInput.cs" />
+    <Compile Include="Data\NickNameOutput.cs" />
     <Compile Include="Data\SpellingOutput.cs" />
     <Compile Include="EditNameDetails.cs" />
+    <Compile Include="GetNickNames.cs" />
     <Compile Include="GetPagedDetailedNamesAlphabetized.cs" />
     <Compile Include="GetSpellings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

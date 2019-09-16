@@ -52,5 +52,16 @@ namespace Names.Domain
 		/// Add a new spelling record.
 		/// </summary>
 		void AddSpelling(string commonName, string variationName);
+
+		/// <summary>
+		/// Returns all nicknames, order by FullName then NickName, with Names attached.
+		/// </summary>
+		/// <returns></returns>
+		NickNameRecord[] GetNickNames();
+
+		/// <summary>
+		/// Add a new nickname record.
+		/// </summary>
+		void AddNickName(string fullName, string nickName);
 	}
 }

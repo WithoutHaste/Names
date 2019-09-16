@@ -62,5 +62,20 @@ namespace Names.Edit.SoapService
 		{
 			UseCases.AddSpelling.Execute(NamesGateway, commonName, variationName);
 		}
+
+		public NickNameResponse[] GetNickNames()
+		{
+			return UseCases.GetNickNames.Execute(NamesGateway).Select(output => new NickNameResponse() {
+				FullNameId = output.FullNameId,
+				FullName = output.FullName,
+				NickNameId = output.NickNameId,
+				NickName = output.NickName
+			}).ToArray();
+		}
+
+		public void AddNickName(string fullName, string nickName)
+		{
+			UseCases.AddNickName.Execute(NamesGateway, fullName, nickName);
+		}
 	}
 }
