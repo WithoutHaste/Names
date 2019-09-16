@@ -9,8 +9,10 @@ namespace Names.Edit.MvcSite.Models.Spelling
 	public class AddAlternateSpelling
 	{
 		[Required]
-		public string NormalName { get; set; }
+		[Display(Name="Common Name")]
+		public string CommonName { get; set; }
 		[Required]
-		public string AlternateName { get; set; }
+		[Display(Name="Variation Name")]
+		public string VariationName { get; set; }
 	}
 }

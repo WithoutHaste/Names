@@ -32,6 +32,10 @@ namespace Names.Edit.MvcSite.Controllers
 		[AcceptVerbs(HttpVerbs.Post)]
 		public ActionResult Save(AddAlternateSpelling alternateSpelling)
 		{
+			NameClient client = new NameClient();
+			client.AddSpelling(alternateSpelling.CommonName, alternateSpelling.VariationName);
+			client.Close();
+
 			return RedirectToAction("All");
 		}
     }

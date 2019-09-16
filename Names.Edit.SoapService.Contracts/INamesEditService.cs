@@ -33,5 +33,13 @@ namespace Names.Edit.SoapService.Contracts
 		/// <returns></returns>
 		[OperationContract]
 		SpellingResponse[] GetSpellings();
+
+		/// <summary>
+		/// Add a spelling association between these names.
+		/// </summary>
+		/// <param name="commonName"></param>
+		/// <param name="variationName"></param>
+		[OperationContract]
+		void AddSpelling(string commonName, string variationName);
     }
 }

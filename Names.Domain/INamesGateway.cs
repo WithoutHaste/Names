@@ -47,5 +47,10 @@ namespace Names.Domain
 		/// </summary>
 		/// <returns></returns>
 		SpellingRecord[] GetSpellings();
+
+		/// <summary>
+		/// Add a new spelling record.
+		/// </summary>
+		void AddSpelling(string commonName, string variationName);
 	}
 }

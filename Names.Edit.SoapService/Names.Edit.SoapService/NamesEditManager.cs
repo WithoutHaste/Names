@@ -56,5 +56,10 @@ namespace Names.Edit.SoapService
 				VariationName = output.VariationName
 			}).ToArray();
 		}
+
+		public void AddSpelling(string commonName, string variationName)
+		{
+			UseCases.AddSpelling.Execute(NamesGateway, commonName, variationName);
+		}
 	}
 }

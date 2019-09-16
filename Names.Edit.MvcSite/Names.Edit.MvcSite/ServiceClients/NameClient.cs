@@ -27,5 +27,10 @@ namespace Names.Edit.MvcSite.ServiceClients
 		{
 			return Channel.GetSpellings();
 		}
+
+		public void AddSpelling(string commonName, string variationName)
+		{
+			Channel.AddSpelling(commonName, variationName);
+		}
 	}
 }

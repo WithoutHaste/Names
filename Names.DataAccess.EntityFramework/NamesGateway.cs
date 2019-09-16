@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Globalization;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Names.Domain;
 using Names.Domain.Entities;
@@ -70,6 +72,31 @@ namespace Names.DataAccess.EntityFramework
 					.OrderBy(spelling => spelling.CommonName.Name)
 					.ThenBy(spelling => spelling.VariationName.Name)
 					.ToArray();
+			}
+		}
+
+		public void AddSpelling(string commonName, string variationName)
+		{
+			CultureInfo cultureInfo = Thread.CurrentThread.CurrentCulture;
+			TextInfo textInfo = cultureInfo.TextInfo;
+			commonName = textInfo.ToTitleCase(commonName);
+			variationName = textInfo.ToTitleCase(variationName);
+
+			using(NamesContext context = new NamesContext())
+			{
+				NameRecord commonNameRecord = context.Names.FirstOrDefault(name => name.Name == commonName);
+				NameRecord variationNameRecord = context.Names.FirstOrDefault(name => name.Name == variationName);
+				if(commonNameRecord == null)
+					throw new Exception("Common name not found.");
+				if(variationNameRecord == null)
+					throw new Exception("Variation name not found.");
+
+				SpellingRecord record = context.Spellings.FirstOrDefault(spelling => spelling.CommonNameId == commonNameRecord.Id && spelling.VariationNameId == variationNameRecord.Id);
+				if(record != null)
+					return;
+				record = new SpellingRecord() { CommonNameId = commonNameRecord.Id, VariationNameId = variationNameRecord.Id };
+				context.Spellings.Add(record);
+				context.SaveChanges();
 			}
 		}
 	}
