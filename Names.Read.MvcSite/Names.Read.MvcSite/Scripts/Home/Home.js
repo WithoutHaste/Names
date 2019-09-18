@@ -8,6 +8,9 @@
 			url: "Home/Search"
             ,type: "post"
             ,data: $("form").serialize() //includes values from form on current page
+			, error: function (jqXHR, textStatus, errorThrown) {
+				searchResults.innerHTML = "Error: " + errorThrown;
+			}
 		};
 		$.ajax(options).done(function (data) {
 			searchResults.innerHTML = data;
