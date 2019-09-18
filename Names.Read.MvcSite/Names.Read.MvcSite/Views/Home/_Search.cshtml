@@ -4,7 +4,7 @@
 	Layout = null;
 }
 
-<span class="">@Model.NameCountMessage</span><br /><br />
+<span class="names-count" data-names-count="@Model.Names.Length">@Model.NameCountMessage</span><br /><br />
 @foreach(string firstLetter in Model.Names.Select(name => name.FirstLetter).Distinct())
 {
 	<div class="expand-collapse expand-disabled">

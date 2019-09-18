@@ -23,6 +23,14 @@
 });
 
 function enableExpandCollapse() {
+	const namesCount = $(".names-count")[0];
+	if (namesCount != undefined) {
+		if ($(namesCount).data("names-count") < 400) {
+			//do not enable expand/collapse, just leave all names visible
+			return;
+		}
+	}
+
 	$(".expand-collapse").each(function () {
 		$(this).removeClass("expand-disabled"); //enable operation
 		$(this).addClass("collapsed"); //start with all segments collapsed
