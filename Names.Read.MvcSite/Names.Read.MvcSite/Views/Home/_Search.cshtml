@@ -1,14 +1,32 @@
 ﻿@using Names.Read.MvcSite.Models.Home
 @model SearchModel
+@{
+	Layout = null;
+}
 
 <span class="">@Model.NameCountMessage</span><br /><br />
-@foreach(NameModel name in Model.Names)
+@foreach(string firstLetter in Model.Names.Select(name => name.FirstLetter).Distinct())
 {
-	<span class="display-search-result">
-		<span class="display-name">@name.Name</span>
-		<span class="display-gender">@name.Boy</span>
-		<span class="display-gender">@name.Girl</span>
-		<span class="display-origin">@name.OriginText</span>
-	</span>
-	<br />
+	<div class="expand-collapse expand-disabled">
+		<div class="expand-header">
+			<span class="expand-header-text">@firstLetter</span>
+			<button class="button-collapse">Collapse</button>
+			<button class="button-expand">Expand</button>
+		</div>
+		<div class="expand-body">
+		@foreach(NameModel name in Model.Names.Where(name => name.FirstLetter == firstLetter))
+		{
+			<span class="display-search-result">
+				<span>&nbsp;&nbsp;</span>
+				<span class="display-name">@name.Name</span>
+				<span class="display-gender">@name.Boy</span>
+				<span class="display-gender">@name.Girl</span>
+				<span class="display-origin">@name.OriginText</span>
+				<span>&nbsp;&nbsp;</span>
+			</span>
+			<br/>
+		}
+		</div>
+	</div>
 }
+

@@ -44,6 +44,7 @@ namespace Names.Read.MvcSite.Controllers
 		{
 			return new NameModel() {
 				Name = response.Name,
+				FirstLetter = response.FirstLetter,
 				IsBoy = response.IsBoy,
 				IsGirl = response.IsGirl,
 				OriginText = String.Join(", ", response.Origins)

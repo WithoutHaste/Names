@@ -14,6 +14,8 @@ namespace Names.Read.SoapService.Contracts
 		[DataMember]
 		public string Name { get; set; }
 		[DataMember]
+		public string FirstLetter { get; set; }
+		[DataMember]
 		public bool? IsBoy { get; set; }
 		[DataMember]
 		public bool? IsGirl { get; set; }

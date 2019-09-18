@@ -1,6 +1,8 @@
 ﻿body {
 	width: 100%;
 	background-color: #f4f7d2; /* pale yellow */
+	font-size: 16px;
+	font-family: "sans serif";
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -86,6 +88,39 @@ button:hover {
 
 .display-origin {
 	font-style: italic;
+}
+
+.expand-collapse.expand-disabled button {
+	display: none; /* hide buttons when operation is disabled */
+}
+
+.expand-collapse.collapsed .expand-body {
+	display: none; /* hide body when parent is marked collapsed */
+}
+.expand-collapse.collapsed .button-expand {
+	display: inline; /* display button */
+}
+.expand-collapse.collapsed .button-collapse {
+	display: none; /* hide button */
+}
+
+.expand-collapse.expanded .button-collapse {
+	display: inline; /* display button */
+}
+.expand-collapse.expanded .button-expand {
+	display: none; /* hide button */
+}
+
+.expand-header {
+	font-size: 22px;
+	padding: 4px;
+	background-color: #163317; /*dark forest green*/
+	color: #FFFFFF; /* white */
+}
+
+.expand-header-text {
+	display: inline-block;
+	width: 14em;
 }
 
 .loader {
