@@ -16,6 +16,8 @@ namespace Names.Read.SoapService
 		{
 			return new NameResponse() {
 				Name = output.Name,
+				IsBoy = output.IsBoy,
+				IsGirl = output.IsGirl,
 				Origins = output.Origins
 			};
 		}

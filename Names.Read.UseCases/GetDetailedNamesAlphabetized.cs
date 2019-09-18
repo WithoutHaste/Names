@@ -14,6 +14,8 @@ namespace Names.Read.UseCases
 		{
 			return gateway.GetNamesWithDetails(origin).GroupBy(record => record.Name).Select(group => new NameOutput() {
 				Name = group.Key,
+				IsBoy = group.Any(detail => detail.IsBoy == true),
+				IsGirl = group.Any(detail => detail.IsGirl == true),
 				Origins = group.Select(detail => detail.Origin).Distinct().ToList()
 			}).OrderBy(output => output.Name).ToList();
 		}

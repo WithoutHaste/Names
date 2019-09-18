@@ -79,6 +79,11 @@ button:hover {
 	width: 11em;
 }
 
+.display-gender {
+	display: inline-block;
+	width: 4em;
+}
+
 .display-origin {
 	font-style: italic;
 }

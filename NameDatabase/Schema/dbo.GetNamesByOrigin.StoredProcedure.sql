@@ -1,6 +1,6 @@
 USE [NameDatabase]
 GO
-/****** Object:  StoredProcedure [dbo].[GetNamesByOrigin]    Script Date: 9/14/2019 2:25:24 PM ******/
+/****** Object:  StoredProcedure [dbo].[GetNamesByOrigin]    Script Date: 9/18/2019 8:37:24 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -30,6 +30,8 @@ begin
 		Name.FirstLetter,
 		Name.IsFamiliar,
 		NameDetail.Id as NameDetailId,
+		NameDetail.IsBoy,
+		NameDetail.IsGirl,
 		NameDetail.Origin,
 		NameDetail.Meaning
 	from dbo.Name

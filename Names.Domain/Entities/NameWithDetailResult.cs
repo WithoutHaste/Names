@@ -14,6 +14,8 @@ namespace Names.Domain.Entities
 		public bool? IsFamiliar { get; set; }
 
 		public int NameDetailId { get; set; }
+		public bool? IsBoy { get; set; }
+		public bool? IsGirl { get; set; }
 		public string Origin { get; set; }
 		public string Meaning { get; set; }
 	}
