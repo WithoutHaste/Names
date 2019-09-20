@@ -29,11 +29,13 @@ namespace Names.Read.SoapService
 			return NamesGateway.TestDataStoreConnection();
 		}
 
-		public ICollection<NameResponse> GetDetailedNames(string origin)
+		public ICollection<NameResponse> GetDetailedNames(string origin, GenderOption gender)
 		{
 			if(origin == "All")
 				origin = null;
-			return GetDetailedNamesAlphabetized.Execute(NamesGateway, origin).Select(output => Convert.NameOutputToResponse(output)).ToList();
+			bool includeBoys = (gender != GenderOption.OnlyGirls);
+			bool includeGirls = (gender != GenderOption.OnlyBoys);
+			return GetDetailedNamesAlphabetized.Execute(NamesGateway, origin, includeBoys, includeGirls).Select(output => Convert.NameOutputToResponse(output)).ToList();
 		}
 
 		public ICollection<CategoryResponse> GetCategories()

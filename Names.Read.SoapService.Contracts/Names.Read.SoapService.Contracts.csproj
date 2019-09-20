@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoryResponse.cs" />
+    <Compile Include="Enums.cs" />
     <Compile Include="INamesReadService.cs" />
     <Compile Include="NameResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -21,7 +21,7 @@ namespace Names.Read.SoapService.Contracts
 		/// </summary>
 		/// <param name="origin">Set to NULL or "All" for "select all". Set to one Category. Each Category includes all subcategories.</param>
 		[OperationContract]
-		ICollection<NameResponse> GetDetailedNames(string origin);
+		ICollection<NameResponse> GetDetailedNames(string origin, GenderOption gender);
 
 		/// <summary>
 		/// Return tree-structure of valid categories (origins).

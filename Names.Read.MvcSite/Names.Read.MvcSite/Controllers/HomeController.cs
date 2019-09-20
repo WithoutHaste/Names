@@ -12,16 +12,16 @@ namespace Names.Read.MvcSite.Controllers
 	public class HomeController : Controller
 	{
 		[AcceptVerbs(HttpVerbs.Get)]
-		public ActionResult Index(string origin=null)
+		public ActionResult Index(string origin=null, string gender="Any")
 		{
-			IndexModel model = new IndexModel(origin);
+			IndexModel model = new IndexModel(origin, gender);
 
 			NameClient nameClient = new NameClient();
 			model.Categories = nameClient.GetCategories().Select(response => ConvertCategoryResponseToModel(response)).ToArray();
 			if(!String.IsNullOrEmpty(origin))
 			{
 				model.Search = new SearchModel();
-				model.Search.Names = nameClient.GetDetailedNames(origin).Select(response => ConvertNameResponseToModel(response)).ToArray();
+				model.Search.Names = nameClient.GetDetailedNames(origin, gender).Select(response => ConvertNameResponseToModel(response)).ToArray();
 			}
 			nameClient.Close();
 
@@ -29,12 +29,12 @@ namespace Names.Read.MvcSite.Controllers
 		}
 
 		[AcceptVerbs(HttpVerbs.Post)]
-		public ActionResult Search(string origin = null)
+		public ActionResult Search(string origin = null, string gender="Any")
 		{
 			SearchModel model = new SearchModel();
 
 			NameClient nameClient = new NameClient();
-			model.Names = nameClient.GetDetailedNames(origin).Select(response => ConvertNameResponseToModel(response)).ToArray();
+			model.Names = nameClient.GetDetailedNames(origin, gender).Select(response => ConvertNameResponseToModel(response)).ToArray();
 			nameClient.Close();
 
 			return View("_Search", model);

@@ -21,6 +21,15 @@
 		@using(Html.BeginForm("Index", "Home", FormMethod.Get))
 		{
 			<button type="submit" id="submitSearch">Search</button><br/>
+
+			string anyGenderChecked = Model.GenderSelected("Any") ? "checked" : "";
+			string boyGenderChecked = Model.GenderSelected("OnlyBoys") ? "checked" : "";
+			string girlGenderChecked = Model.GenderSelected("OnlyGirls") ? "checked" : "";
+			<input type="radio" name="gender" value="Any" @anyGenderChecked />@:Boys and Girls<br/>
+			<input type="radio" name="gender" value="OnlyBoys" @boyGenderChecked />@:Only Boys<br />
+			<input type="radio" name="gender" value="OnlyGirls" @girlGenderChecked />@:Only Girls<br />
+			<br/>
+
 			foreach(OriginModel origin in Model.Origins)
 			{
 				string checkedAttribute = origin.Checked ? "checked" : "";

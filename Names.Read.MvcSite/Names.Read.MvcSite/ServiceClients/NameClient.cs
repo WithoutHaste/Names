@@ -18,9 +18,20 @@ namespace Names.Read.MvcSite.ServiceClients
 			return Channel.TestDataStoreConnection();
 		}
 
-		public ICollection<NameResponse> GetDetailedNames(string origin)
+		public ICollection<NameResponse> GetDetailedNames(string origin, string gender)
 		{
-			return Channel.GetDetailedNames(origin);
+			GenderOption genderOption = GenderOption.Any;
+			switch(gender)
+			{
+				case "OnlyBoys": genderOption = GenderOption.OnlyBoys; break;
+				case "OnlyGirls": genderOption = GenderOption.OnlyGirls; break;
+			}
+			return GetDetailedNames(origin, genderOption);
+		}
+
+		public ICollection<NameResponse> GetDetailedNames(string origin, GenderOption gender)
+		{
+			return Channel.GetDetailedNames(origin, gender);
 		}
 
 		public ICollection<CategoryResponse> GetCategories()
