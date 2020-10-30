@@ -1,8 +1,9 @@
 ﻿body {
 	width: 100%;
-	background-color: #f4f7d2; /* pale yellow */
+	background-color: white;
+    color: #222222;
 	font-size: 16px;
-	font-family: "sans serif";
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -15,23 +16,22 @@ textarea {
 /* grid layout */
 .grid-container {
 	display: grid;
-	grid-template-columns: 11em 30em;
+	grid-template-columns: 13em 30em;
 	grid-template-rows: 6em auto;
 }
 
 /* big title bar at top of page */
 .title-bar {
-	grid-column-start: 1;
-	grid-column-end: end;
-	grid-row-start: 1;
-	grid-row-end: 2;
-
-	background-color: #163317; /*dark forest green*/
-	color: #FFFFFF; /* white */
+    grid-column-start: 1;
+    grid-column-end: end;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    background-color: black;
+    color: white;
     padding-left: 15px;
-	padding-top: 15px;
-	margin-bottom: 15px;
-	font-size: 44px;
+    padding-top: 15px;
+    margin-bottom: 15px;
+    font-size: 44px;
 }
 
 .title-bar .subtext {
@@ -39,20 +39,17 @@ textarea {
 	font-style: italic;
 }
 
-.title-bar .subtext a {
-	color: #47A54A; /* medium forest green */
-}
-
 button {
-	background-color: #163317; /*dark forest green*/
-	color: #FFFFFF; /* white */
-	border: 1px solid black;
-	font-size: 16px;
-	padding: 4px, 16px, 4px, 16px;
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+    font-size: 16px;
+    padding: 4px, 16px, 4px, 16px;
 }
 button:hover {
-	background-color: #47A54A; /* medium forest green */
-	cursor: pointer;
+    background-color: #FEA819; /* matte yellow-orange */
+    border-color: #FCCB7A;
+    cursor: pointer;
 }
 
 /* left-hand menu for categories/origins */
@@ -112,10 +109,10 @@ button:hover {
 }
 
 .expand-header {
-	font-size: 22px;
-	padding: 4px;
-	background-color: #163317; /*dark forest green*/
-	color: #FFFFFF; /* white */
+    font-size: 22px;
+    padding: 4px;
+    background-color: black;
+    color: white;
 }
 
 .expand-header-text {
@@ -124,12 +121,12 @@ button:hover {
 }
 
 .loader {
-  border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #163317; /*dark forest green*/
-  border-radius: 50%;
-  width: 120px;
-  height: 120px;
-  animation: spin 2s linear infinite;
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid black;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
 }
 
 @keyframes spin {
