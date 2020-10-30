@@ -38,6 +38,40 @@
       </Row>
       <Row>
         <Cell>
+          <Data ss:Type="Number">16</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">setting up KeyVault so I don't check in database login to github</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Task</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2020-10-30T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">17</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">can I make a readonly user on the db, for the service?</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Task</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2020-10-30T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
           <Data ss:Type="Number">14</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
@@ -394,7 +428,7 @@
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">15</Data>
+          <Data ss:Type="Number">17</Data>
         </Cell>
       </Row>
       <Row>
