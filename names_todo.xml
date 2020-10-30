@@ -38,10 +38,10 @@
       </Row>
       <Row>
         <Cell>
-          <Data ss:Type="Number">5</Data>
+          <Data ss:Type="Number">6</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">upload SoapServices</Data>
+          <Data ss:Type="String">upload MvcSite</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
@@ -55,10 +55,10 @@
       </Row>
       <Row>
         <Cell>
-          <Data ss:Type="Number">6</Data>
+          <Data ss:Type="Number">5</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">upload MvcSite</Data>
+          <Data ss:Type="String">upload SoapServices</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
