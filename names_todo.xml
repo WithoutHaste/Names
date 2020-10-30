@@ -38,10 +38,10 @@
       </Row>
       <Row>
         <Cell>
-          <Data ss:Type="Number">6</Data>
+          <Data ss:Type="Number">14</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">upload MvcSite</Data>
+          <Data ss:Type="String">setup dev vs release configuration settings</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
@@ -50,15 +50,15 @@
           <Data ss:Type="String">Task</Data>
         </Cell>
         <Cell ss:StyleID="cellShortDate">
-          <Data ss:Type="DateTime">2020-10-23T00:00:00.000</Data>
+          <Data ss:Type="DateTime">2020-10-30T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
         <Cell>
-          <Data ss:Type="Number">5</Data>
+          <Data ss:Type="Number">15</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">upload SoapServices</Data>
+          <Data ss:Type="String">confirm the Service is talking to the Database and the Site is talking to the Service</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
@@ -67,7 +67,7 @@
           <Data ss:Type="String">Task</Data>
         </Cell>
         <Cell ss:StyleID="cellShortDate">
-          <Data ss:Type="DateTime">2020-10-23T00:00:00.000</Data>
+          <Data ss:Type="DateTime">2020-10-30T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
@@ -185,6 +185,46 @@
         </Cell>
         <Cell ss:StyleID="header">
           <Data ss:Type="String">Done</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">5</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">upload SoapServices</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Task</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2020-10-23T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2020-10-30T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">6</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">upload MvcSite</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Task</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2020-10-23T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2020-10-30T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
@@ -354,7 +394,7 @@
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">13</Data>
+          <Data ss:Type="Number">15</Data>
         </Cell>
       </Row>
       <Row>
