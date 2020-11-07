@@ -13,6 +13,11 @@ namespace Names.Read.MvcSite.ServiceClients
 		{
 		}
 
+		public bool TestServiceConnection()
+		{
+			return Channel.TestServiceConnection();
+		}
+
 		public string TestDataStoreConnection()
 		{
 			return Channel.TestDataStoreConnection();
