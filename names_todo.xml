@@ -44,24 +44,8 @@
           <Data ss:Type="String">confirm site is talking to the service
 - I can manuall navigate to http://namesservice.azurewebsites.net/NamesReadService.svc and it works, but site says it cannot communicate with service
 - testing with local WcfTestClient
-- ok, service is running - the errors may be because the db is inaccessible</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Todo</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Task</Data>
-        </Cell>
-        <Cell ss:StyleID="cellShortDate">
-          <Data ss:Type="DateTime">2020-11-07T00:00:00.000</Data>
-        </Cell>
-      </Row>
-      <Row>
-        <Cell>
-          <Data ss:Type="Number">24</Data>
-        </Cell>
-        <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">delete key store from Azure</Data>
+- ok, service is running - the errors may be because the db is inaccessible
+- now WcfTestClient confirms the Service returns data from the database, but Site says the service address is not answering</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
@@ -222,6 +206,27 @@
         </Cell>
         <Cell ss:StyleID="header">
           <Data ss:Type="String">Done</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">24</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">delete key store from Azure
+DONE</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Task</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2020-11-07T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2020-11-07T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
