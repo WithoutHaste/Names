@@ -43,7 +43,8 @@
         <Cell ss:StyleID="paragraph">
           <Data ss:Type="String">setup dev vs release configuration settings
 - how do I use azure keys here?
-- how to give NamesService access to NamesKeyVault?</Data>
+- how to give NamesService access to NamesKeyVault?
+- would NameService &gt; Settings &gt; ConnectionStrings be an alternative to a key store?  if so, delete the key store</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
@@ -57,10 +58,27 @@
       </Row>
       <Row>
         <Cell>
+          <Data ss:Type="Number">23</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">confirm site is talking to the service</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Task</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2020-11-07T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
           <Data ss:Type="Number">15</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">confirm the Service is talking to the Database and the Site is talking to the Service</Data>
+          <Data ss:Type="String">confirm the Service is talking to the Database</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
@@ -122,6 +140,23 @@
         </Cell>
         <Cell ss:StyleID="cellShortDate">
           <Data ss:Type="DateTime">2020-10-23T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">22</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">once site is working, don't print full exceptions on error page</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Task</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2020-11-07T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
@@ -496,7 +531,7 @@
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">21</Data>
+          <Data ss:Type="Number">23</Data>
         </Cell>
       </Row>
       <Row>
