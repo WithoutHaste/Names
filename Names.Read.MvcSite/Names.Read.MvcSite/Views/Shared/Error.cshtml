@@ -4,6 +4,13 @@
     ViewBag.Title = "Error";
 }
 
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
+<h1 class="text-danger">Error</h1>
 
+@if(Model.Exception is System.ServiceModel.EndpointNotFoundException)
+{
+    <h2 class="text-danger">Cannot communicate with service.</h2>
+}
+else
+{
+    <h2 class="text-danger">An unkown error has occurred.</h2>
+}
