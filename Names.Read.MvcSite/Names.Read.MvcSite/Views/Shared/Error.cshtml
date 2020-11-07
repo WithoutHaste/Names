@@ -4,13 +4,19 @@
     ViewBag.Title = "Error";
 }
 
-<h1 class="text-danger">Error</h1>
+<h3 class="text-danger">Error</h3>
 
 @if(Model.Exception is System.ServiceModel.EndpointNotFoundException)
 {
-    <h2 class="text-danger">Cannot communicate with service.</h2>
+    @:Cannot communicate with service.
+}
+else if(Model.Exception is System.ServiceModel.FaultException)
+{
+    @:Service is reachable.<br/>
+    @(Model.Exception)
 }
 else
 {
-    <h2 class="text-danger">An unkown error has occurred.</h2>
+    @:An unkown error has occurred.<br/>
+    @(Model.Exception)
 }
