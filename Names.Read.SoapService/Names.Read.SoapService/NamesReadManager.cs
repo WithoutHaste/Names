@@ -24,6 +24,11 @@ namespace Names.Read.SoapService
 			}
 		}
 
+		public bool TestServiceConnection()
+		{
+			return true;
+		}
+
 		public string TestDataStoreConnection()
 		{
 			return NamesGateway.TestDataStoreConnection();

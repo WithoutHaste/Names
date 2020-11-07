@@ -11,6 +11,12 @@ namespace Names.Read.SoapService.Contracts
 	public interface INamesReadService
 	{
 		/// <summary>
+		/// Minimum end to end test that shows this service is running
+		/// </summary>
+		[OperationContract]
+		bool TestServiceConnection();
+
+		/// <summary>
 		/// Minimum end to end test that pulls some data from the database.
 		/// </summary>
 		[OperationContract]
