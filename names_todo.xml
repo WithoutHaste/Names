@@ -45,7 +45,8 @@
 - I can manuall navigate to http://namesservice.azurewebsites.net/NamesReadService.svc and it works, but site says it cannot communicate with service
 - testing with local WcfTestClient
 - ok, service is running - the errors may be because the db is inaccessible
-- now WcfTestClient confirms the Service returns data from the database, but Site says the service address is not answering</Data>
+- now WcfTestClient confirms the Service returns data from the database, but Site says the service address is not answering
+- Site: turning "HTTPS only" off</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
@@ -59,11 +60,31 @@
       </Row>
       <Row>
         <Cell>
+          <Data ss:Type="Number">26</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">I might need to do this
+https://docs.microsoft.com/en-us/azure/app-service/app-service-web-tutorial-custom-domain</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Task</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2020-11-08T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
           <Data ss:Type="Number">7</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
           <Data ss:Type="String">get a domain name
-- AllTheNames.com ?</Data>
+- AllTheNames.com is taken
+- EveryName.com is taken
+- NamesAbound.com got it</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
@@ -175,6 +196,23 @@
         </Cell>
         <Cell ss:StyleID="cellShortDate">
           <Data ss:Type="DateTime">2020-10-27T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">25</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">consider putting in a secret that site passes to service</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Task</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2020-11-07T00:00:00.000</Data>
         </Cell>
       </Row>
     </Table>
@@ -565,7 +603,7 @@ DONE</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">24</Data>
+          <Data ss:Type="Number">26</Data>
         </Cell>
       </Row>
       <Row>
