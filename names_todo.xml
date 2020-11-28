@@ -38,10 +38,10 @@
       </Row>
       <Row>
         <Cell>
-          <Data ss:Type="Number">8</Data>
+          <Data ss:Type="Number">30</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">direct domain name to Azure site</Data>
+          <Data ss:Type="String">The EXECUTE permission was denied on the object 'GetNamesByOrigin', database 'NamesDatabase', schema 'dbo'.</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
@@ -50,24 +50,7 @@
           <Data ss:Type="String">Task</Data>
         </Cell>
         <Cell ss:StyleID="cellShortDate">
-          <Data ss:Type="DateTime">2020-10-23T00:00:00.000</Data>
-        </Cell>
-      </Row>
-      <Row>
-        <Cell>
-          <Data ss:Type="Number">9</Data>
-        </Cell>
-        <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">verify names site is available online</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Todo</Data>
-        </Cell>
-        <Cell>
-          <Data ss:Type="String">Task</Data>
-        </Cell>
-        <Cell ss:StyleID="cellShortDate">
-          <Data ss:Type="DateTime">2020-10-23T00:00:00.000</Data>
+          <Data ss:Type="DateTime">2020-11-28T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
@@ -184,6 +167,72 @@
         </Cell>
         <Cell ss:StyleID="header">
           <Data ss:Type="String">Done</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">9</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">verify names site is available online
+- it works from local, but not from azure yet
+- possibly a cors error? but it's reaching service from the site, not from the webpage</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Task</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2020-10-23T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2020-11-28T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">29</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">possible dns reference https://books.thoughtbot.com/assets/domain-name-sanity.pdf</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Task</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2020-11-27T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2020-11-28T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">8</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">direct domain name to Azure site
+- oh it says the hostname is already used by the service
+- ok, I need to partition the names better
+- how about "www.service.namesabound.com" for the service? and the base domain for the site?
+- it is working! took a whole day for the records to update right</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Done</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Task</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2020-10-23T00:00:00.000</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2020-11-28T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
@@ -636,7 +685,7 @@ DONE</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">27</Data>
+          <Data ss:Type="Number">30</Data>
         </Cell>
       </Row>
       <Row>
