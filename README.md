@@ -1,8 +1,7 @@
 # Names
 
-Demo project for WCF and ASP.Net MVC - search a database of first names.
+[www.NamesAbound.com](http://www.namesabound.com/)
 
-## Architecture
+Lookup first names without ads or paging.
 
-![Architecture Diagram](Images/architecture.png)
-[Architecture source](ARCHITECTURE.html)
+Practice project: Azure, SQL Server, WCF Service, Asp.Net MVC Site
