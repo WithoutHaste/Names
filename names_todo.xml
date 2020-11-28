@@ -41,7 +41,8 @@
           <Data ss:Type="Number">31</Data>
         </Cell>
         <Cell ss:StyleID="paragraph">
-          <Data ss:Type="String">gosh that lookup is slow - but it does bring back ALL the data so you don't have to page</Data>
+          <Data ss:Type="String">gosh that lookup is slow - but it does bring back ALL the data so you don't have to page
+- would need to higher paid tier on Azure, probably</Data>
         </Cell>
         <Cell>
           <Data ss:Type="String">Todo</Data>
@@ -68,6 +69,23 @@
         </Cell>
         <Cell ss:StyleID="cellShortDate">
           <Data ss:Type="DateTime">2020-10-27T00:00:00.000</Data>
+        </Cell>
+      </Row>
+      <Row>
+        <Cell>
+          <Data ss:Type="Number">32</Data>
+        </Cell>
+        <Cell ss:StyleID="paragraph">
+          <Data ss:Type="String">I'm sure there's more data clean up to do</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Todo</Data>
+        </Cell>
+        <Cell>
+          <Data ss:Type="String">Task</Data>
+        </Cell>
+        <Cell ss:StyleID="cellShortDate">
+          <Data ss:Type="DateTime">2020-11-28T00:00:00.000</Data>
         </Cell>
       </Row>
       <Row>
@@ -715,7 +733,7 @@ DONE</Data>
           </Data>
         </Cell>
         <Cell>
-          <Data ss:Type="Number">31</Data>
+          <Data ss:Type="Number">32</Data>
         </Cell>
       </Row>
       <Row>
