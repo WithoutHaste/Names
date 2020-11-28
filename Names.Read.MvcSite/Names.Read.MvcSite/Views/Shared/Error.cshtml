@@ -9,15 +9,15 @@
 @if(Model.Exception is System.ServiceModel.EndpointNotFoundException)
 {
     @:Cannot communicate with service.<br />
-    @(Model.Exception)
+    //@(Model.Exception)
 }
 else if(Model.Exception is System.ServiceModel.FaultException)
 {
-    @:Service is reachable.<br />
-    @(Model.Exception)
+    @:Service is reachable. A service error has occurred<br />
+    //@(Model.Exception)
 }
 else
 {
     @:An unkown error has occurred.<br />
-    @(Model.Exception)
+    //@(Model.Exception)
 }
