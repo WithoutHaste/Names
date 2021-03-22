@@ -1,0 +1,333 @@
+USE [master]
+GO
+CREATE DATABASE [NameDatabase]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'NameDatabase', FILENAME = N'C:\Users\Jennelle\NameDatabase.mdf' , SIZE = 73728KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'NameDatabase_log', FILENAME = N'C:\Users\Jennelle\NameDatabase_log.ldf' , SIZE = 204800KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+GO
+ALTER DATABASE [NameDatabase] SET COMPATIBILITY_LEVEL = 130
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [NameDatabase].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [NameDatabase] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [NameDatabase] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [NameDatabase] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [NameDatabase] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [NameDatabase] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [NameDatabase] SET AUTO_CLOSE ON 
+GO
+ALTER DATABASE [NameDatabase] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [NameDatabase] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [NameDatabase] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [NameDatabase] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [NameDatabase] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [NameDatabase] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [NameDatabase] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [NameDatabase] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [NameDatabase] SET  ENABLE_BROKER 
+GO
+ALTER DATABASE [NameDatabase] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [NameDatabase] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [NameDatabase] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [NameDatabase] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [NameDatabase] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [NameDatabase] SET READ_COMMITTED_SNAPSHOT ON 
+GO
+ALTER DATABASE [NameDatabase] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [NameDatabase] SET RECOVERY SIMPLE 
+GO
+ALTER DATABASE [NameDatabase] SET  MULTI_USER 
+GO
+ALTER DATABASE [NameDatabase] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [NameDatabase] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [NameDatabase] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [NameDatabase] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [NameDatabase] SET DELAYED_DURABILITY = DISABLED 
+GO
+ALTER DATABASE [NameDatabase] SET QUERY_STORE = OFF
+GO
+USE [NameDatabase]
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET LEGACY_CARDINALITY_ESTIMATION = OFF;
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET MAXDOP = 0;
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET PARAMETER_SNIFFING = ON;
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET QUERY_OPTIMIZER_HOTFIXES = OFF;
+GO
+USE [NameDatabase]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[__MigrationHistory](
+	[MigrationId] [nvarchar](150) NOT NULL,
+	[ContextKey] [nvarchar](300) NOT NULL,
+	[Model] [varbinary](max) NOT NULL,
+	[ProductVersion] [nvarchar](32) NOT NULL,
+ CONSTRAINT [PK_dbo.__MigrationHistory] PRIMARY KEY CLUSTERED 
+(
+	[MigrationId] ASC,
+	[ContextKey] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Category](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Category] [nvarchar](128) NOT NULL,
+	[SuperCategory] [nvarchar](128) NULL,
+ CONSTRAINT [PK_dbo.Category] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Name](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](128) NOT NULL,
+	[FirstLetter] [nvarchar](4) NOT NULL,
+	[IsFamiliar] [bit] NULL,
+ CONSTRAINT [PK_dbo.Name] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[NameDetail](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[NameId] [int] NOT NULL,
+	[SourceId] [int] NOT NULL,
+	[IsBoy] [bit] NULL,
+	[IsGirl] [bit] NULL,
+	[IsFirstName] [bit] NULL,
+	[IsLastName] [bit] NULL,
+	[Origin] [nvarchar](128) NULL,
+	[Meaning] [nvarchar](256) NULL,
+	[CreateDateTime] [datetime] NOT NULL,
+ CONSTRAINT [PK_dbo.NameDetail] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[NickName](
+	[NickNameId] [int] NOT NULL,
+	[FullNameId] [int] NOT NULL,
+ CONSTRAINT [PK_dbo.NickName] PRIMARY KEY CLUSTERED 
+(
+	[NickNameId] ASC,
+	[FullNameId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Source](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](128) NOT NULL,
+	[Url] [nvarchar](256) NULL,
+ CONSTRAINT [PK_dbo.Source] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Spelling](
+	[CommonNameId] [int] NOT NULL,
+	[VariationNameId] [int] NOT NULL,
+ CONSTRAINT [PK_dbo.Spelling] PRIMARY KEY CLUSTERED 
+(
+	[CommonNameId] ASC,
+	[VariationNameId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+CREATE NONCLUSTERED INDEX [IX_NameId] ON [dbo].[NameDetail]
+(
+	[NameId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+CREATE NONCLUSTERED INDEX [IX_SourceId] ON [dbo].[NameDetail]
+(
+	[SourceId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+CREATE NONCLUSTERED INDEX [IX_FullNameId] ON [dbo].[NickName]
+(
+	[FullNameId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+CREATE NONCLUSTERED INDEX [IX_NickNameId] ON [dbo].[NickName]
+(
+	[NickNameId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+CREATE NONCLUSTERED INDEX [IX_CommonNameId] ON [dbo].[Spelling]
+(
+	[CommonNameId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+CREATE NONCLUSTERED INDEX [IX_VariationNameId] ON [dbo].[Spelling]
+(
+	[VariationNameId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[NameDetail]  WITH CHECK ADD  CONSTRAINT [FK_dbo.NameDetail_dbo.Name_NameId] FOREIGN KEY([NameId])
+REFERENCES [dbo].[Name] ([Id])
+GO
+ALTER TABLE [dbo].[NameDetail] CHECK CONSTRAINT [FK_dbo.NameDetail_dbo.Name_NameId]
+GO
+ALTER TABLE [dbo].[NameDetail]  WITH CHECK ADD  CONSTRAINT [FK_dbo.NameDetail_dbo.Source_SourceId] FOREIGN KEY([SourceId])
+REFERENCES [dbo].[Source] ([Id])
+GO
+ALTER TABLE [dbo].[NameDetail] CHECK CONSTRAINT [FK_dbo.NameDetail_dbo.Source_SourceId]
+GO
+ALTER TABLE [dbo].[NickName]  WITH CHECK ADD  CONSTRAINT [FK_dbo.NickName_dbo.Name_FullNameId] FOREIGN KEY([FullNameId])
+REFERENCES [dbo].[Name] ([Id])
+GO
+ALTER TABLE [dbo].[NickName] CHECK CONSTRAINT [FK_dbo.NickName_dbo.Name_FullNameId]
+GO
+ALTER TABLE [dbo].[NickName]  WITH CHECK ADD  CONSTRAINT [FK_dbo.NickName_dbo.Name_NickNameId] FOREIGN KEY([NickNameId])
+REFERENCES [dbo].[Name] ([Id])
+GO
+ALTER TABLE [dbo].[NickName] CHECK CONSTRAINT [FK_dbo.NickName_dbo.Name_NickNameId]
+GO
+ALTER TABLE [dbo].[Spelling]  WITH CHECK ADD  CONSTRAINT [FK_dbo.Spelling_dbo.Name_CommonNameId] FOREIGN KEY([CommonNameId])
+REFERENCES [dbo].[Name] ([Id])
+GO
+ALTER TABLE [dbo].[Spelling] CHECK CONSTRAINT [FK_dbo.Spelling_dbo.Name_CommonNameId]
+GO
+ALTER TABLE [dbo].[Spelling]  WITH CHECK ADD  CONSTRAINT [FK_dbo.Spelling_dbo.Name_VariationNameId] FOREIGN KEY([VariationNameId])
+REFERENCES [dbo].[Name] ([Id])
+GO
+ALTER TABLE [dbo].[Spelling] CHECK CONSTRAINT [FK_dbo.Spelling_dbo.Name_VariationNameId]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [dbo].[GetNamesByOrigin]
+	@origin as nvarchar(128)
+as
+begin
+	with categoryCTE (Category)
+	as
+	(
+		select 
+			Category
+		from dbo.Category 
+		where Category.Category = @origin OR Category.SuperCategory = @origin
+
+		UNION ALL
+
+		select 
+			Category.Category 
+		from Category 
+		inner join categoryCTE on Category.SuperCategory = categoryCTE.Category
+	)
+	select
+		Name.Id as NameId,
+		Name.Name,
+		Name.FirstLetter,
+		Name.IsFamiliar,
+		NameDetail.Id as NameDetailId,
+		NameDetail.IsBoy,
+		NameDetail.IsGirl,
+		NameDetail.Origin,
+		NameDetail.Meaning
+	from dbo.Name
+	inner join dbo.NameDetail on NameDetail.NameId = Name.Id
+	where @origin is NULL or @origin = '' or NameDetail.Origin IN (SELECT Category from categoryCTE)
+end;
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE procedure [dbo].[GetPagedNames]
+	@pageIndex as int,
+	@rowsPerPage as int
+as
+begin
+	select
+		NameId,
+		Name,
+		FirstLetter,
+		IsFamiliar,
+		NameDetailId,
+		Origin,
+		Meaning
+	from (
+		select
+			ROW_NUMBER() OVER(ORDER BY Name, NameDetail.Id) as RowNumber,
+			Name.Id as NameId,
+			Name.Name,
+			Name.FirstLetter,
+			Name.IsFamiliar,
+			NameDetail.Id as NameDetailId,
+			NameDetail.Origin,
+			NameDetail.Meaning
+		from dbo.Name
+		inner join dbo.NameDetail on NameDetail.NameId = Name.Id
+	) as AllNamesWithDetails
+	where RowNumber > @pageIndex * @rowsPerPage
+		AND RowNumber <= (@pageIndex + 1) * @rowsPerPage
+	order by RowNumber
+end;
+GO
+USE [master]
+GO
+ALTER DATABASE [NameDatabase] SET  READ_WRITE 
+GO
