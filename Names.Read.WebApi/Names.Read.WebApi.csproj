@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Names.DataAccess.EntityFramework\Names.DataAccess.EntityFramework.csproj" />
+    <ProjectReference Include="..\Names.Domain\Names.Domain.csproj" />
+    <ProjectReference Include="..\Names.Read.SoapService.Contracts\Names.Read.SoapService.Contracts.csproj" />
+    <ProjectReference Include="..\Names.Read.UseCases\Names.Read.UseCases.csproj" />
+  </ItemGroup>
+
+</Project>

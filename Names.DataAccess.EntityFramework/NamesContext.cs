@@ -35,7 +35,7 @@ namespace Names.DataAccess.EntityFramework
 		{
 			SqlParameter originParameter = new SqlParameter("Origin", (object)origin ?? DBNull.Value);
 
-			return NameWithDetailResults.FromSqlRaw("exec GetNamesByOrigin @Origin", originParameter).ToList();
+			return NameWithDetailResults.FromSql("exec GetNamesByOrigin @Origin", originParameter).ToList();
 		}
 
 		public NameWithDetailResult[] GetPagedNames(int pageIndex, int rowsPerPage)
@@ -43,7 +43,7 @@ namespace Names.DataAccess.EntityFramework
 			SqlParameter pageIndexParameter = new SqlParameter("pageIndex", pageIndex);
 			SqlParameter rowsPerPageParameter = new SqlParameter("rowsPerPage", rowsPerPage);
 
-			return NameWithDetailResults.FromSqlRaw("exec GetPagedNames @pageIndex, @rowsPerPage", pageIndexParameter, rowsPerPageParameter).ToArray();
+			return NameWithDetailResults.FromSql("exec GetPagedNames @pageIndex, @rowsPerPage", pageIndexParameter, rowsPerPageParameter).ToArray();
 		}
 	}
 }

@@ -8,7 +8,7 @@ namespace Names.DataAccess.EntityFramework.Configurations
 	{
 		public void Configure(EntityTypeBuilder<SourceRecord> builder)
 		{
-			builder.HasMany(source => source.NameDetails).WithOne(detail => detail.Source).OnDelete(DeleteBehavior.NoAction);
+			builder.HasMany(source => source.NameDetails).WithOne(detail => detail.Source).OnDelete(DeleteBehavior.SetNull);
 		}
 	}
 }
