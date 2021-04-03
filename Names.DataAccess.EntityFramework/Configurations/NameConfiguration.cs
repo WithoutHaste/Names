@@ -1,24 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity.ModelConfiguration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Names.Domain.Entities;
 
 namespace Names.DataAccess.EntityFramework.Configurations
 {
-	public class NameConfiguration : EntityTypeConfiguration<NameRecord>
+	public class NameConfiguration : IEntityTypeConfiguration<NameRecord>
 	{
-		public NameConfiguration()
+		public void Configure(EntityTypeBuilder<NameRecord> builder)
 		{
-			HasMany(name => name.Details).WithRequired(detail => detail.Name).WillCascadeOnDelete(false);
-			HasMany(name => name.AsCommonSpellings).WithRequired(spelling => spelling.CommonName).WillCascadeOnDelete(false);
-			HasMany(name => name.AsVariationSpellings).WithRequired(spelling => spelling.VariationName).WillCascadeOnDelete(false);
-			HasMany(name => name.AsNickNames).WithRequired(nickname => nickname.NickName).WillCascadeOnDelete(false);
-			HasMany(name => name.AsFullNames).WithRequired(nickname => nickname.FullName).WillCascadeOnDelete(false);
+			builder.HasMany(name => name.Details).WithOne(detail => detail.Name).OnDelete(DeleteBehavior.NoAction);
+			builder.HasMany(name => name.AsCommonSpellings).WithOne(spelling => spelling.CommonName).OnDelete(DeleteBehavior.NoAction);
+			builder.HasMany(name => name.AsVariationSpellings).WithOne(spelling => spelling.VariationName).OnDelete(DeleteBehavior.NoAction);
+			builder.HasMany(name => name.AsNickNames).WithOne(nickname => nickname.NickName).OnDelete(DeleteBehavior.NoAction);
+			builder.HasMany(name => name.AsFullNames).WithOne(nickname => nickname.FullName).OnDelete(DeleteBehavior.NoAction);
 		}
 	}
 }

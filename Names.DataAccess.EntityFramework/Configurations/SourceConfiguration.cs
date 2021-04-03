@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity.ModelConfiguration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Names.Domain.Entities;
 
 namespace Names.DataAccess.EntityFramework.Configurations
 {
-	public class SourceConfiguration : EntityTypeConfiguration<SourceRecord>
+	public class SourceConfiguration : IEntityTypeConfiguration<SourceRecord>
 	{
-		public SourceConfiguration()
+		public void Configure(EntityTypeBuilder<SourceRecord> builder)
 		{
-			HasMany(source => source.NameDetails).WithRequired(detail => detail.Source).WillCascadeOnDelete(false);
+			builder.HasMany(source => source.NameDetails).WithOne(detail => detail.Source).OnDelete(DeleteBehavior.NoAction);
 		}
 	}
 }

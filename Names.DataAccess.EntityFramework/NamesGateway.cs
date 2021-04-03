@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Globalization;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Names.Domain;
 using Names.Domain.Entities;
 
@@ -95,7 +94,7 @@ namespace Names.DataAccess.EntityFramework
 		{
 			using(NamesContext context = new NamesContext())
 			{
-				return context.Spellings.Include("CommonName").Include("VariationName")
+				return context.Spellings.Include(spelling => spelling.CommonName).Include(spelling => spelling.VariationName)
 					.OrderBy(spelling => spelling.CommonName.Name)
 					.ThenBy(spelling => spelling.VariationName.Name)
 					.ToArray();
@@ -131,7 +130,7 @@ namespace Names.DataAccess.EntityFramework
 		{
 			using(NamesContext context = new NamesContext())
 			{
-				return context.NickNames.Include("FullName").Include("NickName")
+				return context.NickNames.Include(nickname => nickname.FullName).Include(nickname => nickname.NickName)
 					.OrderBy(nickname => nickname.FullName.Name)
 					.ThenBy(nickname => nickname.NickName.Name)
 					.ToArray();

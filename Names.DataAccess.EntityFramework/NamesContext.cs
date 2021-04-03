@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.Entity.Core.Objects;
-using System.Data.Entity.Infrastructure;
-using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Names.Domain.Entities;
 using Names.DataAccess.EntityFramework.Configurations;
 
@@ -22,16 +17,17 @@ namespace Names.DataAccess.EntityFramework
 		public DbSet<CategoryRecord> Categories { get; set; }
 		public DbSet<SourceRecord> Sources { get; set; }
 
+		//just for stored proc results
+		public DbSet<NameWithDetailResult> NameWithDetailResults { get; set; }
+
 		public NamesContext() : base("name=NameDatabase")
 		{
 		}
 
-		protected override void OnModelCreating(DbModelBuilder modelBuilder)
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-			modelBuilder.Configurations
-				.Add(new NameConfiguration())
-				.Add(new SourceConfiguration())
-				;
+			modelBuilder.ApplyConfiguration<NameRecord>(new NameConfiguration());
+			modelBuilder.ApplyConfiguration<SourceRecord>(new SourceConfiguration());
 			base.OnModelCreating(modelBuilder);
 		}
 
@@ -39,7 +35,7 @@ namespace Names.DataAccess.EntityFramework
 		{
 			SqlParameter originParameter = new SqlParameter("Origin", (object)origin ?? DBNull.Value);
 
-			return Database.SqlQuery<NameWithDetailResult>("exec GetNamesByOrigin @Origin", originParameter).ToList<NameWithDetailResult>();
+			return NameWithDetailResults.FromSqlRaw("exec GetNamesByOrigin @Origin", originParameter).ToList();
 		}
 
 		public NameWithDetailResult[] GetPagedNames(int pageIndex, int rowsPerPage)
@@ -47,7 +43,7 @@ namespace Names.DataAccess.EntityFramework
 			SqlParameter pageIndexParameter = new SqlParameter("pageIndex", pageIndex);
 			SqlParameter rowsPerPageParameter = new SqlParameter("rowsPerPage", rowsPerPage);
 
-			return Database.SqlQuery<NameWithDetailResult>("exec GetPagedNames @pageIndex, @rowsPerPage", pageIndexParameter, rowsPerPageParameter).ToArray<NameWithDetailResult>();
+			return NameWithDetailResults.FromSqlRaw("exec GetPagedNames @pageIndex, @rowsPerPage", pageIndexParameter, rowsPerPageParameter).ToArray();
 		}
 	}
 }

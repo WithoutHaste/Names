@@ -1,20 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace Names.DataAccess.EntityFramework
 {
 	internal abstract class BaseContext<T> : DbContext where T:DbContext
 	{
-		static BaseContext()
-		{
-			Database.SetInitializer<T>(null);
-		}
-
-		protected BaseContext(string connectionStringToName) : base(connectionStringToName)
+		protected BaseContext(string connectionStringToName) : base()
 		{
 		}
 
