@@ -2,9 +2,9 @@
 
 namespace Names.DataAccess.EntityFramework
 {
-	internal abstract class BaseContext<T> : DbContext where T:DbContext
+	public abstract class BaseContext<T> : DbContext where T:DbContext
 	{
-		protected BaseContext(string connectionStringToName) : base()
+		protected BaseContext(DbContextOptions<NamesContext> options) : base(options)
 		{
 		}
 

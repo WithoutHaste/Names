@@ -29,3 +29,10 @@ looks like maybe netstandard2.0 CAN be used by netcoreapp2.1
 EntityFrameworkCore 2.1.14 limits EntityFrameworkCore.Relational to 2.1.14
 - and that does not contain extension method `DbSet<T>.FromRawSql` which I need for stored proc calls
 - looks like just calling it `FromSql` instead fixes it
+
+sort out how to unit test later
+
+No database provider has been configured for this DbContext. A provider can be configured by overriding the DbContext.OnConfiguring method or by using AddDbContext on the application service provider. If AddDbContext is used, then also ensure that your DbContext type accepts a DbContextOptions<TContext> object in its constructor and passes it to the base constructor for DbContext.
+- sorted this out
+
+Entity type 'NickNameRecord' has composite primary key defined with data annotations. To set composite primary key, use fluent API.

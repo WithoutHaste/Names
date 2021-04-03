@@ -14,12 +14,8 @@ namespace Names.Domain.Entities
 	[Table("NickName")]
 	public class NickNameRecord
 	{
-		[Key]
-		[Column(Order=1)]
 		[ForeignKey("NickName")]
 		public int NickNameId { get; set; }
-		[Key]
-		[Column(Order=2)]
 		[ForeignKey("FullName")]
 		public int FullNameId { get; set; }
 

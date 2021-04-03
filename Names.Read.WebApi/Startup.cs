@@ -3,12 +3,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Names.DataAccess.EntityFramework;
+using Names.Domain;
 
 namespace Names.Read.WebApi
 {
@@ -25,6 +22,9 @@ namespace Names.Read.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddDbContext<NamesContext>(options => options.UseSqlServer(Configuration.GetConnectionString("NamesDatabase")));
+            services.AddScoped<INamesContext, NamesContext>();
+            services.AddScoped<INamesGateway, NamesGateway>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

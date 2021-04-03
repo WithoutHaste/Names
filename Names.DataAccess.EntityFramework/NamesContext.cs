@@ -8,7 +8,7 @@ using Names.DataAccess.EntityFramework.Configurations;
 
 namespace Names.DataAccess.EntityFramework
 {
-	internal class NamesContext : BaseContext<NamesContext>
+	public class NamesContext : BaseContext<NamesContext>, INamesContext
 	{
 		public DbSet<NameRecord> Names { get; set; }
 		public DbSet<NameDetailRecord> NameDetails { get; set; }
@@ -20,14 +20,17 @@ namespace Names.DataAccess.EntityFramework
 		//just for stored proc results
 		public DbSet<NameWithDetailResult> NameWithDetailResults { get; set; }
 
-		public NamesContext() : base("name=NameDatabase")
+		public NamesContext(DbContextOptions<NamesContext> options) : base(options)
 		{
 		}
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-			modelBuilder.ApplyConfiguration<NameRecord>(new NameConfiguration());
-			modelBuilder.ApplyConfiguration<SourceRecord>(new SourceConfiguration());
+			modelBuilder.ApplyConfiguration(new NameConfiguration());
+			modelBuilder.ApplyConfiguration(new NickNameConfiguration());
+			modelBuilder.ApplyConfiguration(new SpellingConfiguration());
+			modelBuilder.ApplyConfiguration(new SourceConfiguration());
+			modelBuilder.ApplyConfiguration(new NameWithDetailConfiguration());
 			base.OnModelCreating(modelBuilder);
 		}
 
