@@ -21,7 +21,7 @@ namespace Names.Read.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddControllers();
             services.AddDbContext<NamesContext>(options => options.UseSqlServer(Configuration.GetConnectionString("NamesDatabase")));
             services.AddScoped<INamesContext, NamesContext>();
             services.AddScoped<INamesGateway, NamesGateway>();
@@ -35,7 +35,13 @@ namespace Names.Read.WebApi
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvc();
+            //app.UseHttpsRedirection();
+            app.UseRouting();
+            //app.UseAuthorization();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
 }

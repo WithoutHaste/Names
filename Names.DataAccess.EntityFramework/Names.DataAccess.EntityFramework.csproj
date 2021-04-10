@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <OutputType>Library</OutputType>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest> <!-- will export the DLLs required to run if the SDK is not installed-->
@@ -12,9 +12,9 @@
     <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.2.217201">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.14" />
-	  <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="2.1.14" />
-	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.14" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.0.3" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.0.3" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.3" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
   </ItemGroup>
 </Project>
