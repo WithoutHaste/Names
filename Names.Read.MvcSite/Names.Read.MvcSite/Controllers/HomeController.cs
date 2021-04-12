@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using Names.Read.MvcSite.ServiceClients;
 using Names.Read.SoapService.Contracts;
 using Names.Read.MvcSite.Models.Home;
@@ -10,11 +11,18 @@ namespace Names.Read.MvcSite.Controllers
 {
 	public class HomeController : Controller
 	{
+		private readonly IOptions<ConnectionOptions> _connectionOptions;
+
+		public HomeController(IOptions<ConnectionOptions> connectionOptions) : base() 
+		{
+			_connectionOptions = connectionOptions;
+		}
+
 		[HttpGet]
 		public async Task<ActionResult> Index(string origin=null, string gender="Any")
 		{
 			IndexModel model = new IndexModel(origin, gender);
-			NameClient nameClient = new NameClient();
+			NameClient nameClient = new NameClient(_connectionOptions);
 			CategoryResponse[] categories = (await nameClient.GetCategories()).ToArray();
 			model.Categories = categories.Select(response => ConvertCategoryResponseToModel(response)).ToArray();
 			if(!String.IsNullOrEmpty(origin))
@@ -32,7 +40,7 @@ namespace Names.Read.MvcSite.Controllers
 		{
 			SearchModel model = new SearchModel();
 
-			NameClient nameClient = new NameClient();
+			NameClient nameClient = new NameClient(_connectionOptions);
 			NameResponse[] names = (await nameClient.GetDetailedNames(origin, gender)).ToArray();
 			model.Names = names.Select(response => ConvertNameResponseToModel(response)).ToArray();
 

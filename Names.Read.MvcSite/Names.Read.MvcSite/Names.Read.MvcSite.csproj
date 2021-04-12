@@ -21,13 +21,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Update="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Update="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <None Include="Web.template.config" />
     <None Include="wwwroot\css\Site.css" />
     <None Include="wwwroot\js\Home.js" />
     <None Include="wwwroot\js\jquery-1.10.2.intellisense.js" />
@@ -53,9 +46,6 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.5" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Scripts\Home\" />
   </ItemGroup>
   <Target Name="BeforeBuild">
     <TransformXml Source="Web.template.config" Transform="Web.$(Configuration).config" Destination="Web.config" />

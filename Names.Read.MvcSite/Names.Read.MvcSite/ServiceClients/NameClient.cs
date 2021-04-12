@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Names.Read.SoapService.Contracts;
 
@@ -11,8 +12,11 @@ namespace Names.Read.MvcSite.ServiceClients
 {
 	public class NameClient
 	{
-		public NameClient()
+		private readonly string _namesUrl;
+
+		public NameClient(IOptions<ConnectionOptions> connectionOptions)
 		{
+			_namesUrl = connectionOptions.Value.NamesService;
 		}
 
 		public async Task<bool> TestServiceConnection()
@@ -50,7 +54,7 @@ namespace Names.Read.MvcSite.ServiceClients
 		{
 			using (var client = new HttpClient())
 			{
-				client.BaseAddress = new Uri("http://localhost:5000/api/");
+				client.BaseAddress = new Uri(_namesUrl);
 				if (queryParams != null)
 					partialUrl += "?" + queryParams;
 				var result = await client.GetAsync(partialUrl);
@@ -70,7 +74,7 @@ namespace Names.Read.MvcSite.ServiceClients
 		{
 			using (var client = new HttpClient())
 			{
-				client.BaseAddress = new Uri("http://localhost:5000/api/");
+				client.BaseAddress = new Uri(_namesUrl);
 				var result = await client.PostAsJsonAsync<TRequest>(partialUrl, request);
 				if (result.IsSuccessStatusCode)
 				{

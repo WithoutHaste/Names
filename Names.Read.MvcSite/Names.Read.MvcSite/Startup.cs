@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Names.Read.MvcSite.ServiceClients;
 
 namespace Names.Read.MvcSite
 {
@@ -39,6 +40,7 @@ namespace Names.Read.MvcSite
                     options.UseMemberCasing();
                 });
 
+            services.Configure<ConnectionOptions>(Configuration.GetSection("Connection"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
