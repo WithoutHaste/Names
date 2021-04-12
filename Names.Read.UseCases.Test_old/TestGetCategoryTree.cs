@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Moq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 using Names.Domain;
 using Names.Domain.Entities;
 using Names.Read.UseCases;
@@ -10,10 +10,9 @@ using Names.Read.UseCases.Data;
 
 namespace Names.Read.UseCases.Test
 {
-	[TestClass]
 	public class TestGetCategoryTree
 	{
-		[TestMethod]
+		[Fact]
 		public void Execute_TopLevelBecauseNull()
 		{
 			//assign
@@ -31,11 +30,11 @@ namespace Names.Read.UseCases.Test
 			List<CategoryOutput> result = GetCategoryTree.Execute(mockGateway.Object).ToList();
 
 			//assert
-			Assert.AreEqual(1, result.Count, "Result set count.");
-			Assert.AreEqual(records[0].Category, result[0].Category, "Category label.");
+			Assert.Single(result);
+			Assert.Equal(records[0].Category, result[0].Category);
 		}
 
-		[TestMethod]
+		[Fact]
 		public void Execute_TopLevelBecauseEmptyString()
 		{
 			//assign
@@ -53,11 +52,11 @@ namespace Names.Read.UseCases.Test
 			List<CategoryOutput> result = GetCategoryTree.Execute(mockGateway.Object).ToList();
 
 			//assert
-			Assert.AreEqual(1, result.Count, "Result set count.");
-			Assert.AreEqual(records[0].Category, result[0].Category, "Category label.");
+			Assert.Single(result);
+			Assert.Equal(records[0].Category, result[0].Category);
 		}
 
-		[TestMethod]
+		[Fact]
 		public void Execute_MultipleTopLevelCategory_MultipleChildrenEach()
 		{
 			//assign
@@ -98,18 +97,18 @@ namespace Names.Read.UseCases.Test
 			result = result.OrderBy(x => x.Category).ToList();
 			result[0].SubCategories = result[0].SubCategories.OrderBy(x => x.Category).ToList();
 			result[1].SubCategories = result[1].SubCategories.OrderBy(x => x.Category).ToList();
-			Assert.AreEqual(2, result.Count, "Result set count.");
-			Assert.AreEqual("TopA", result[0].Category, "Category label.");
-			Assert.AreEqual(2, result[0].SubCategories.Count, "Child count 1.");
-			Assert.AreEqual("ChildA1", result[0].SubCategories[0].Category, "Category label.");
-			Assert.AreEqual("ChildA2", result[0].SubCategories[1].Category, "Category label.");
-			Assert.AreEqual("TopB", result[1].Category, "Category label.");
-			Assert.AreEqual(2, result[1].SubCategories.Count, "Child count 2.");
-			Assert.AreEqual("ChildB1", result[1].SubCategories[0].Category, "Category label.");
-			Assert.AreEqual("ChildB2", result[1].SubCategories[1].Category, "Category label.");
+			Assert.Equal(2, result.Count);
+			Assert.Equal("TopA", result[0].Category);
+			Assert.Equal(2, result[0].SubCategories.Count);
+			Assert.Equal("ChildA1", result[0].SubCategories[0].Category);
+			Assert.Equal("ChildA2", result[0].SubCategories[1].Category);
+			Assert.Equal("TopB", result[1].Category);
+			Assert.Equal(2, result[1].SubCategories.Count);
+			Assert.Equal("ChildB1", result[1].SubCategories[0].Category);
+			Assert.Equal("ChildB2", result[1].SubCategories[1].Category);
 		}
 
-		[TestMethod]
+		[Fact]
 		public void Execute_CategoryWithMultipleSubCategoriesAllowed()
 		{
 			//assign
@@ -145,18 +144,18 @@ namespace Names.Read.UseCases.Test
 			//assert
 			result = result.OrderBy(x => x.Category).ToList();
 			result[0].SubCategories = result[0].SubCategories.OrderBy(x => x.Category).ToList();
-			Assert.AreEqual(1, result.Count, "Result set count.");
-			Assert.AreEqual("A", result[0].Category, "Category label.");
-			Assert.AreEqual(2, result[0].SubCategories.Count, "Child count 1.");
-			Assert.AreEqual("B", result[0].SubCategories[0].Category, "Category label.");
-			Assert.AreEqual("C", result[0].SubCategories[1].Category, "Category label.");
-			Assert.AreEqual(1, result[0].SubCategories[0].SubCategories.Count, "Child count 2.");
-			Assert.AreEqual("D", result[0].SubCategories[0].SubCategories[0].Category, "Category label.");
-			Assert.AreEqual(1, result[0].SubCategories[1].SubCategories.Count, "Child count 3.");
-			Assert.AreEqual("D", result[0].SubCategories[1].SubCategories[0].Category, "Category label.");
+			Assert.Single(result);
+			Assert.Equal("A", result[0].Category);
+			Assert.Equal(2, result[0].SubCategories.Count);
+			Assert.Equal("B", result[0].SubCategories[0].Category);
+			Assert.Equal("C", result[0].SubCategories[1].Category);
+			Assert.Single(result[0].SubCategories[0].SubCategories);
+			Assert.Equal("D", result[0].SubCategories[0].SubCategories[0].Category);
+			Assert.Single(result[0].SubCategories[1].SubCategories);
+			Assert.Equal("D", result[0].SubCategories[1].SubCategories[0].Category);
 		}
 
-		[TestMethod]
+		[Fact]
 		public void Execute_LoopsDontCauseErrors()
 		{
 			//assign
@@ -191,14 +190,14 @@ namespace Names.Read.UseCases.Test
 
 			//assert
 			result = result.OrderBy(x => x.Category).ToList();
-			Assert.AreEqual(1, result.Count, "Result set count.");
-			Assert.AreEqual("A", result[0].Category, "Category label.");
-			Assert.AreEqual(1, result[0].SubCategories.Count, "Child count 1.");
-			Assert.AreEqual("B", result[0].SubCategories[0].Category, "Category label.");
-			Assert.AreEqual(1, result[0].SubCategories[0].SubCategories.Count, "Child count 2.");
-			Assert.AreEqual("C", result[0].SubCategories[0].SubCategories[0].Category, "Category label.");
-			Assert.AreEqual(1, result[0].SubCategories[0].SubCategories[0].SubCategories.Count, "Child count 3.");
-			Assert.AreEqual("D", result[0].SubCategories[0].SubCategories[0].SubCategories[0].Category, "Category label.");
+			Assert.Single(result);
+			Assert.Equal("A", result[0].Category);
+			Assert.Single(result[0].SubCategories);
+			Assert.Equal("B", result[0].SubCategories[0].Category);
+			Assert.Single(result[0].SubCategories[0].SubCategories);
+			Assert.Equal("C", result[0].SubCategories[0].SubCategories[0].Category);
+			Assert.Single(result[0].SubCategories[0].SubCategories[0].SubCategories);
+			Assert.Equal("D", result[0].SubCategories[0].SubCategories[0].SubCategories[0].Category);
 		}
 	}
 }

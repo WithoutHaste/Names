@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Globalization;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Names.Domain;
 using Names.Domain.Entities;
 
@@ -15,91 +14,80 @@ namespace Names.DataAccess.EntityFramework
 	/// </summary>
 	public class NamesGateway : INamesGateway
 	{
+		private readonly INamesContext _context;
+
+		public NamesGateway(INamesContext context)
+		{
+			_context = context;
+		}
+
 		public string TestDataStoreConnection()
 		{
-			using(NamesContext context = new NamesContext())
-			{
-				List<NameRecord> names = context.Names.ToList();
-				return "Found " + names.Count + " names.";
-			}
+			List<NameRecord> names = _context.Names.ToList();
+			return "Found " + names.Count + " names.";
 		}
 
 		public ICollection<NameWithDetailResult> GetNamesWithDetails(string origin)
 		{
-			using(NamesContext context = new NamesContext())
-			{
-				return context.GetNamesByOrigin(origin).ToList();
-			}
+			return _context.GetNamesByOrigin(origin).ToList();
 		}
 
 		public ICollection<CategoryRecord> GetCategories()
 		{
-			using(NamesContext context = new NamesContext())
-			{
-				return context.Categories.ToList();
-			}
+			return _context.Categories.ToList();
 		}
 
 		public NameWithDetailResult[] GetAlphabetizedPagedNamesWithDetails(int pageIndex, int rowsPerPage)
 		{
-			using(NamesContext context = new NamesContext())
-			{
-				return context.GetPagedNames(pageIndex, rowsPerPage);
-			}
+			return _context.GetPagedNames(pageIndex, rowsPerPage);
 		}
 
 		public void EditNameDetails(EditNameDetailRequest[] editRequests)
 		{
 			int[] ids = editRequests.Select(request => request.NameDetailId).ToArray();
-			using(NamesContext context = new NamesContext())
+			NameDetailRecord[] records = _context.NameDetails.Where(record => ids.Contains(record.Id)).ToArray();
+			foreach(NameDetailRecord record in records)
 			{
-				NameDetailRecord[] records = context.NameDetails.Where(record => ids.Contains(record.Id)).ToArray();
-				foreach(NameDetailRecord record in records)
+				EditNameDetailRequest request = editRequests.First(r => r.NameDetailId == record.Id);
+				if(request.IsDeleted)
 				{
-					EditNameDetailRequest request = editRequests.First(r => r.NameDetailId == record.Id);
-					if(request.IsDeleted)
-					{
-						context.NameDetails.Remove(record);
-					}
-					else
-					{
-						if(request.Origin.Contains(","))
-						{
-							string[] origins = request.Origin.Split(',');
-							request.Origin = origins[0].Trim();
-							for(int i = 1; i < origins.Length; i++)
-							{
-								NameDetailRecord newRecord = new NameDetailRecord() {
-									NameId = record.NameId,
-									SourceId = record.SourceId,
-									IsBoy = record.IsBoy,
-									IsGirl = record.IsGirl,
-									IsFirstName = record.IsFirstName,
-									IsLastName = record.IsLastName,
-									Origin = origins[i].Trim(),
-									Meaning = request.Meaning,
-									CreateDateTime = record.CreateDateTime
-								};
-								context.NameDetails.Add(newRecord);
-							}
-						}
-						record.Origin = request.Origin;
-						record.Meaning = request.Meaning;
-					}
+					_context.NameDetails.Remove(record);
 				}
-				context.SaveChanges();
+				else
+				{
+					if(request.Origin.Contains(","))
+					{
+						string[] origins = request.Origin.Split(',');
+						request.Origin = origins[0].Trim();
+						for(int i = 1; i < origins.Length; i++)
+						{
+							NameDetailRecord newRecord = new NameDetailRecord() {
+								NameId = record.NameId,
+								SourceId = record.SourceId,
+								IsBoy = record.IsBoy,
+								IsGirl = record.IsGirl,
+								IsFirstName = record.IsFirstName,
+								IsLastName = record.IsLastName,
+								Origin = origins[i].Trim(),
+								Meaning = request.Meaning,
+								CreateDateTime = record.CreateDateTime
+							};
+							_context.NameDetails.Add(newRecord);
+						}
+					}
+					record.Origin = request.Origin;
+					record.Meaning = request.Meaning;
+				}
 			}
+			_context.SaveChanges();
 		}
 
 		public SpellingRecord[] GetSpellings()
 		{
-			using(NamesContext context = new NamesContext())
-			{
-				return context.Spellings.Include("CommonName").Include("VariationName")
-					.OrderBy(spelling => spelling.CommonName.Name)
-					.ThenBy(spelling => spelling.VariationName.Name)
-					.ToArray();
-			}
+			return _context.Spellings.Include(spelling => spelling.CommonName).Include(spelling => spelling.VariationName)
+				.OrderBy(spelling => spelling.CommonName.Name)
+				.ThenBy(spelling => spelling.VariationName.Name)
+				.ToArray();
 		}
 
 		public void AddSpelling(string commonName, string variationName)
@@ -109,33 +97,27 @@ namespace Names.DataAccess.EntityFramework
 			commonName = textInfo.ToTitleCase(commonName);
 			variationName = textInfo.ToTitleCase(variationName);
 
-			using(NamesContext context = new NamesContext())
-			{
-				NameRecord commonNameRecord = context.Names.FirstOrDefault(name => name.Name == commonName);
-				NameRecord variationNameRecord = context.Names.FirstOrDefault(name => name.Name == variationName);
-				if(commonNameRecord == null)
-					throw new Exception("Common name not found.");
-				if(variationNameRecord == null)
-					throw new Exception("Variation name not found.");
+			NameRecord commonNameRecord = _context.Names.FirstOrDefault(name => name.Name == commonName);
+			NameRecord variationNameRecord = _context.Names.FirstOrDefault(name => name.Name == variationName);
+			if(commonNameRecord == null)
+				throw new Exception("Common name not found.");
+			if(variationNameRecord == null)
+				throw new Exception("Variation name not found.");
 
-				SpellingRecord record = context.Spellings.FirstOrDefault(spelling => spelling.CommonNameId == commonNameRecord.Id && spelling.VariationNameId == variationNameRecord.Id);
-				if(record != null)
-					return;
-				record = new SpellingRecord() { CommonNameId = commonNameRecord.Id, VariationNameId = variationNameRecord.Id };
-				context.Spellings.Add(record);
-				context.SaveChanges();
-			}
+			SpellingRecord record = _context.Spellings.FirstOrDefault(spelling => spelling.CommonNameId == commonNameRecord.Id && spelling.VariationNameId == variationNameRecord.Id);
+			if(record != null)
+				return;
+			record = new SpellingRecord() { CommonNameId = commonNameRecord.Id, VariationNameId = variationNameRecord.Id };
+			_context.Spellings.Add(record);
+			_context.SaveChanges();
 		}
 
 		public NickNameRecord[] GetNickNames()
 		{
-			using(NamesContext context = new NamesContext())
-			{
-				return context.NickNames.Include("FullName").Include("NickName")
-					.OrderBy(nickname => nickname.FullName.Name)
-					.ThenBy(nickname => nickname.NickName.Name)
-					.ToArray();
-			}
+			return _context.NickNames.Include(nickname => nickname.FullName).Include(nickname => nickname.NickName)
+				.OrderBy(nickname => nickname.FullName.Name)
+				.ThenBy(nickname => nickname.NickName.Name)
+				.ToArray();
 		}
 
 		public void AddNickName(string fullName, string nickName)
@@ -145,22 +127,19 @@ namespace Names.DataAccess.EntityFramework
 			fullName = textInfo.ToTitleCase(fullName);
 			nickName = textInfo.ToTitleCase(nickName);
 
-			using(NamesContext context = new NamesContext())
-			{
-				NameRecord fullNameRecord = context.Names.FirstOrDefault(name => name.Name == fullName);
-				NameRecord nickNameRecord = context.Names.FirstOrDefault(name => name.Name == nickName);
-				if(fullNameRecord == null)
-					throw new Exception("Full name not found.");
-				if(nickNameRecord == null)
-					throw new Exception("Nickname not found.");
+			NameRecord fullNameRecord = _context.Names.FirstOrDefault(name => name.Name == fullName);
+			NameRecord nickNameRecord = _context.Names.FirstOrDefault(name => name.Name == nickName);
+			if(fullNameRecord == null)
+				throw new Exception("Full name not found.");
+			if(nickNameRecord == null)
+				throw new Exception("Nickname not found.");
 
-				NickNameRecord record = context.NickNames.FirstOrDefault(nickname => nickname.FullNameId == fullNameRecord.Id && nickname.NickNameId == nickNameRecord.Id);
-				if(record != null)
-					return;
-				record = new NickNameRecord() { FullNameId = fullNameRecord.Id, NickNameId = nickNameRecord.Id };
-				context.NickNames.Add(record);
-				context.SaveChanges();
-			}
+			NickNameRecord record = _context.NickNames.FirstOrDefault(nickname => nickname.FullNameId == fullNameRecord.Id && nickname.NickNameId == nickNameRecord.Id);
+			if(record != null)
+				return;
+			record = new NickNameRecord() { FullNameId = fullNameRecord.Id, NickNameId = nickNameRecord.Id };
+			_context.NickNames.Add(record);
+			_context.SaveChanges();
 		}
 	}
 }

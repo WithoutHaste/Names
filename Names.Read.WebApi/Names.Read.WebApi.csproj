@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+	<PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest> <!-- will export the DLLs required to run if the SDK is not installed-->
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Names.DataAccess.EntityFramework\Names.DataAccess.EntityFramework.csproj" />
+    <ProjectReference Include="..\Names.Domain\Names.Domain.csproj" />
+    <ProjectReference Include="..\Names.Read.SoapService.Contracts\Names.Read.SoapService.Contracts.csproj" />
+    <ProjectReference Include="..\Names.Read.UseCases\Names.Read.UseCases.csproj" />
+  </ItemGroup>
+
+</Project>
