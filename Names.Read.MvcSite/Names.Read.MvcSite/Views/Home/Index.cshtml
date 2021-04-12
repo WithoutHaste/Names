@@ -1,53 +1,56 @@
 ﻿@using Names.Read.MvcSite.Models.Home
 @model IndexModel
 @{
-	ViewBag.Title = "Home Page";
+    ViewBag.Title = "Home Page";
 }
 
-@helper Spacing(int depth)
-{
-	for(int i = 0; i < depth; i++)
-	{
-		@:&nbsp;&nbsp;
-	}
+@{
+    void Spacing(int depth)
+    {
+        for (int i = 0; i < depth; i++)
+        {
+            @:&nbsp;&nbsp;
+        }
+    }
 }
 
 <div class="grid-container">
-	<div class="title-bar">
-		First Names
-	</div>
+    <div class="title-bar">
+        First Names
+    </div>
 
-	<div class="category-menu">
-		@using(Html.BeginForm("Index", "Home", FormMethod.Get))
-		{
-			<button type="submit" id="submitSearch">Search</button><br/>
+    <div class="category-menu">
+        @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+        {
+            <button type="submit" id="submitSearch">Search</button><br />
 
-			string anyGenderChecked = Model.GenderSelected("Any") ? "checked" : "";
-			string boyGenderChecked = Model.GenderSelected("OnlyBoys") ? "checked" : "";
-			string girlGenderChecked = Model.GenderSelected("OnlyGirls") ? "checked" : "";
-			<input type="radio" name="gender" value="Any" @anyGenderChecked />@:Boys and Girls<br/>
-			<input type="radio" name="gender" value="OnlyBoys" @boyGenderChecked />@:Only Boys<br />
-			<input type="radio" name="gender" value="OnlyGirls" @girlGenderChecked />@:Only Girls<br />
-			<br/>
+            string anyGenderChecked = Model.GenderSelected("Any") ? "checked" : "";
+            string boyGenderChecked = Model.GenderSelected("OnlyBoys") ? "checked" : "";
+            string girlGenderChecked = Model.GenderSelected("OnlyGirls") ? "checked" : "";
+            <input type="radio" name="gender" value="Any" @anyGenderChecked />@:Boys and Girls<br />
+            <input type="radio" name="gender" value="OnlyBoys" @boyGenderChecked />@:Only Boys<br />
+            <input type="radio" name="gender" value="OnlyGirls" @girlGenderChecked />@:Only Girls<br />
+            <br />
 
-			foreach(OriginModel origin in Model.Origins)
-			{
-				string checkedAttribute = origin.Checked ? "checked" : "";
-				<span><input type="radio" name="origin" value="@origin.Value" @checkedAttribute /> @Spacing(origin.Depth)@origin.Text</span><br />
-			}
-		}
-	</div>
+            foreach (OriginModel origin in Model.Origins)
+            {
+                string checkedAttribute = origin.Checked ? "checked" : "";
+                <span><input type="radio" name="origin" value="@origin.Value" @checkedAttribute /> @{ Spacing(origin.Depth); }@origin.Text</span><br />
+            }
+        }
+    </div>
 
-	<div class="search-results">
-		@{
-			if(Model.Search != null)
-			{
-				Html.RenderPartial("_Search", Model.Search);
-			}
-		}
-	</div>
+    <div class="search-results">
+        @{
+            if (Model.Search != null)
+            {
+                @await Html.PartialAsync("_Search", Model.Search);
+            }
+        }
+    </div>
 </div>
 
 @section scripts {
-	@Scripts.Render("~/Scripts/Home/Home.js")
+    <script src="~/js/jquery-1.10.2.js"></script>
+    <script src="~/js/Home.js"></script>
 }

@@ -4,8 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Find Names</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="~/css/site.css">
 
 </head>
 <body>
@@ -13,9 +12,7 @@
         @RenderBody()
         <footer>
             <hr />
-            This is a demo project for SQL Server, WCF, and ASP.Net MVC.
-            <br />
-            Source is available on <a href='https://github.com/WithoutHaste/Names'>GitHub</a>
+            Demo project. Source is available on <a href='https://github.com/WithoutHaste/Names'>GitHub</a>
             <br />
             Maintained by <a href="http://withouthaste.com">Without Haste</a>
             <br />
@@ -25,7 +22,6 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
 </body>
 </html>

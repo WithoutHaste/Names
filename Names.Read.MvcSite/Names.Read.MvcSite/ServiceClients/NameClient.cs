@@ -86,7 +86,9 @@ namespace Names.Read.MvcSite.ServiceClients
 
 		public static async Task<T> ReadAsAsync<T>(HttpContent content)
 		{
-			return await System.Text.Json.JsonSerializer.DeserializeAsync<T>(await content.ReadAsStreamAsync());
+			string s = await content.ReadAsStringAsync();
+			JsonSerializerOptions options = new JsonSerializerOptions() { PropertyNameCaseInsensitive = true };
+			return await System.Text.Json.JsonSerializer.DeserializeAsync<T>(await content.ReadAsStreamAsync(), options);
 		}
 	}
 

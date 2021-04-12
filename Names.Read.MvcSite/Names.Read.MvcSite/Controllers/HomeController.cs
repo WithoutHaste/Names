@@ -41,6 +41,8 @@ namespace Names.Read.MvcSite.Controllers
 
 		private NameModel ConvertNameResponseToModel(NameResponse response)
 		{
+			if (response == null)
+				return null;
 			return new NameModel() {
 				Name = response.Name,
 				FirstLetter = response.FirstLetter,
@@ -52,6 +54,8 @@ namespace Names.Read.MvcSite.Controllers
 
 		private CategoryModel ConvertCategoryResponseToModel(CategoryResponse response)
 		{
+			if (response == null)
+				return null;
 			return new CategoryModel() {
 				Category = response.Category,
 				SubCategories = response.SubCategories.Select(sub => ConvertCategoryResponseToModel(sub)).ToArray()
