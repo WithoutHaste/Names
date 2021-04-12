@@ -1,6 +1,4 @@
-﻿using System.Web;
-using System.Web.Mvc;
-
+﻿
 namespace Names.Read.MvcSite
 {
 	public class FilterConfig

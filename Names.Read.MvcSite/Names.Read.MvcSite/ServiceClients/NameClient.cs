@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
-using System.Web;
 using Names.Read.SoapService.Contracts;
 
 namespace Names.Read.MvcSite.ServiceClients

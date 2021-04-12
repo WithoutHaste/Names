@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Names.Read.MvcSite.ServiceClients;
 using Names.Read.SoapService.Contracts;
 using Names.Read.MvcSite.Models.Home;
@@ -11,7 +9,7 @@ namespace Names.Read.MvcSite.Controllers
 {
 	public class HomeController : Controller
 	{
-		[AcceptVerbs(HttpVerbs.Get)]
+		[HttpGet]
 		public ActionResult Index(string origin=null, string gender="Any")
 		{
 			IndexModel model = new IndexModel(origin, gender);
@@ -28,7 +26,7 @@ namespace Names.Read.MvcSite.Controllers
 			return View("Index", model);
 		}
 
-		[AcceptVerbs(HttpVerbs.Post)]
+		[HttpPost]
 		public ActionResult Search(string origin = null, string gender="Any")
 		{
 			SearchModel model = new SearchModel();
