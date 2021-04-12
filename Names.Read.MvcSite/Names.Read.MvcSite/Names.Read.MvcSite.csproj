@@ -35,13 +35,10 @@
   <ItemGroup>
     <PackageReference Include="jQuery" Version="1.10.2" />
     <PackageReference Include="jQuery.Validation" Version="1.11.1" />
-    <PackageReference Include="Microsoft.ApplicationInsights.Web" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
     <PackageReference Include="Microsoft.jQuery.Unobtrusive.Validation" Version="3.2.3" />
-    <PackageReference Include="Microsoft.Owin.Security.Facebook" Version="3.0.1" />
-    <PackageReference Include="Microsoft.Owin.Security.Google" Version="3.0.1" />
-    <PackageReference Include="Microsoft.Owin.Security.MicrosoftAccount" Version="3.0.1" />
-    <PackageReference Include="Microsoft.Owin.Security.Twitter" Version="3.0.1" />
     <PackageReference Include="Modernizr" Version="2.6.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Respond" Version="1.2.0" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />

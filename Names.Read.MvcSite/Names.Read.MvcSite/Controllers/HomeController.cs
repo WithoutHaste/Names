@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Names.Read.MvcSite.ServiceClients;
 using Names.Read.SoapService.Contracts;
@@ -10,30 +11,30 @@ namespace Names.Read.MvcSite.Controllers
 	public class HomeController : Controller
 	{
 		[HttpGet]
-		public ActionResult Index(string origin=null, string gender="Any")
+		public async Task<ActionResult> Index(string origin=null, string gender="Any")
 		{
 			IndexModel model = new IndexModel(origin, gender);
-
 			NameClient nameClient = new NameClient();
-			model.Categories = nameClient.GetCategories().Select(response => ConvertCategoryResponseToModel(response)).ToArray();
+			CategoryResponse[] categories = (await nameClient.GetCategories()).ToArray();
+			model.Categories = categories.Select(response => ConvertCategoryResponseToModel(response)).ToArray();
 			if(!String.IsNullOrEmpty(origin))
 			{
 				model.Search = new SearchModel();
-				model.Search.Names = nameClient.GetDetailedNames(origin, gender).Select(response => ConvertNameResponseToModel(response)).ToArray();
+				NameResponse[] names = (await nameClient.GetDetailedNames(origin, gender)).ToArray();
+				model.Search.Names = names.Select(response => ConvertNameResponseToModel(response)).ToArray();
 			}
-			nameClient.Close();
 
 			return View("Index", model);
 		}
 
 		[HttpPost]
-		public ActionResult Search(string origin = null, string gender="Any")
+		public async Task<ActionResult> Search(string origin = null, string gender="Any")
 		{
 			SearchModel model = new SearchModel();
 
 			NameClient nameClient = new NameClient();
-			model.Names = nameClient.GetDetailedNames(origin, gender).Select(response => ConvertNameResponseToModel(response)).ToArray();
-			nameClient.Close();
+			NameResponse[] names = (await nameClient.GetDetailedNames(origin, gender)).ToArray();
+			model.Names = names.Select(response => ConvertNameResponseToModel(response)).ToArray();
 
 			return View("_Search", model);
 		}
