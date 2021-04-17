@@ -1,4 +1,4 @@
-﻿@model System.Web.Mvc.HandleErrorInfo
+﻿@model Names.Read.MvcSite.Models.ErrorModel
 
 @{
     ViewBag.Title = "Error";
@@ -6,18 +6,4 @@
 
 <h3 class="text-danger">Error</h3>
 
-@if(Model.Exception is System.ServiceModel.EndpointNotFoundException)
-{
-    @:Cannot communicate with service.<br />
-    //@(Model.Exception)
-}
-else if(Model.Exception is System.ServiceModel.FaultException)
-{
-    @:Service is reachable. A service error has occurred<br />
-    //@(Model.Exception)
-}
-else
-{
-    @:An unkown error has occurred.<br />
-    //@(Model.Exception)
-}
+Error code: @Model.Code

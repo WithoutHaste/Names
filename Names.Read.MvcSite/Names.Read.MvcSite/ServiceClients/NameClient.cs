@@ -1,29 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.ServiceModel;
-using System.Web;
+using System.Net.Http;
+using System.Text;
+using System.Text.Json;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 using Names.Read.SoapService.Contracts;
 
 namespace Names.Read.MvcSite.ServiceClients
 {
-	public class NameClient : ClientBase<INamesReadService>, INamesReadService
+	public class NameClient
 	{
-		public NameClient() : base("NameEndpoint")
+		private readonly string _namesUrl;
+
+		public NameClient(IOptions<ConnectionOptions> connectionOptions)
 		{
+			_namesUrl = connectionOptions.Value.NamesService;
 		}
 
-		public bool TestServiceConnection()
+		public async Task<bool> TestServiceConnection()
 		{
-			return Channel.TestServiceConnection();
+			return await GetRequest<bool>("test/service-connection");
 		}
 
-		public string TestDataStoreConnection()
+		public async Task<string> TestDataStoreConnection()
 		{
-			return Channel.TestDataStoreConnection();
+			return await GetRequest<string>("test/database-connection");
 		}
 
-		public ICollection<NameResponse> GetDetailedNames(string origin, string gender)
+		public async Task<ICollection<NameResponse>> GetDetailedNames(string origin, string gender)
 		{
 			GenderOption genderOption = GenderOption.Any;
 			switch(gender)
@@ -31,17 +37,69 @@ namespace Names.Read.MvcSite.ServiceClients
 				case "OnlyBoys": genderOption = GenderOption.OnlyBoys; break;
 				case "OnlyGirls": genderOption = GenderOption.OnlyGirls; break;
 			}
-			return GetDetailedNames(origin, genderOption);
+			return await GetDetailedNames(origin, genderOption);
 		}
 
-		public ICollection<NameResponse> GetDetailedNames(string origin, GenderOption gender)
+		public async Task<ICollection<NameResponse>> GetDetailedNames(string origin, GenderOption gender)
 		{
-			return Channel.GetDetailedNames(origin, gender);
+			return await GetRequest<ICollection<NameResponse>>("names", "origin="+origin+"&gender="+gender);
 		}
 
-		public ICollection<CategoryResponse> GetCategories()
+		public async Task<ICollection<CategoryResponse>> GetCategories()
 		{
-			return Channel.GetCategories();
+			return await GetRequest<ICollection<CategoryResponse>>("categories");
 		}
+
+		private async Task<TModel> GetRequest<TModel>(string partialUrl, string queryParams = null)
+		{
+			using (var client = new HttpClient())
+			{
+				client.BaseAddress = new Uri(_namesUrl);
+				if (queryParams != null)
+					partialUrl += "?" + queryParams;
+				var result = await client.GetAsync(partialUrl);
+				if (result.IsSuccessStatusCode)
+				{
+					return await ReadAsAsync<TModel>(result.Content);
+				}
+				else //web api sent error response 
+				{
+					//log response status here..
+					return default;
+				}
+			}
+		}
+
+		private async Task<TModel> PostRequest<TRequest, TModel>(string partialUrl, TRequest request)
+		{
+			using (var client = new HttpClient())
+			{
+				client.BaseAddress = new Uri(_namesUrl);
+				var result = await client.PostAsJsonAsync<TRequest>(partialUrl, request);
+				if (result.IsSuccessStatusCode)
+				{
+					return await ReadAsAsync<TModel>(result.Content);
+				}
+				else //web api sent error response 
+				{
+					//log response status here..
+					return default;
+				}
+			}
+		}
+
+		public static async Task<T> ReadAsAsync<T>(HttpContent content)
+		{
+			string s = await content.ReadAsStringAsync();
+			JsonSerializerOptions options = new JsonSerializerOptions() { PropertyNameCaseInsensitive = true };
+			return await System.Text.Json.JsonSerializer.DeserializeAsync<T>(await content.ReadAsStreamAsync(), options);
+		}
+	}
+
+	public class JsonContent : StringContent
+	{
+		public JsonContent(object obj) :
+			base(JsonConvert.SerializeObject(obj), Encoding.UTF8, "application/json")
+		{ }
 	}
 }

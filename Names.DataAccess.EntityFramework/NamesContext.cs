@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Names.Domain.Entities;
 using Names.DataAccess.EntityFramework.Configurations;
@@ -36,15 +36,15 @@ namespace Names.DataAccess.EntityFramework
 
 		public List<NameWithDetailResult> GetNamesByOrigin(string origin)
 		{
-			SqlParameter originParameter = new SqlParameter("Origin", (object)origin ?? DBNull.Value);
+			SqlParameter originParameter = new SqlParameter("@Origin", (object)origin ?? DBNull.Value);
 
 			return NameWithDetailResults.FromSqlRaw("exec GetNamesByOrigin @Origin", originParameter).ToList();
 		}
 
 		public NameWithDetailResult[] GetPagedNames(int pageIndex, int rowsPerPage)
 		{
-			SqlParameter pageIndexParameter = new SqlParameter("pageIndex", pageIndex);
-			SqlParameter rowsPerPageParameter = new SqlParameter("rowsPerPage", rowsPerPage);
+			SqlParameter pageIndexParameter = new SqlParameter("@pageIndex", pageIndex);
+			SqlParameter rowsPerPageParameter = new SqlParameter("@rowsPerPage", rowsPerPage);
 
 			return NameWithDetailResults.FromSqlRaw("exec GetPagedNames @pageIndex, @rowsPerPage", pageIndexParameter, rowsPerPageParameter).ToArray();
 		}
