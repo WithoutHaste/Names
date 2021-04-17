@@ -21,10 +21,16 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="wwwroot\css\Site.css" />
-    <None Include="wwwroot\js\Home.js" />
+    <None Include="wwwroot\css\Site.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\js\Home.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="wwwroot\js\jquery-1.10.2.intellisense.js" />
-    <None Include="wwwroot\js\jquery-1.10.2.js" />
+    <None Include="wwwroot\js\jquery-1.10.2.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="wwwroot\js\jquery-1.10.2.min.js" />
     <None Include="wwwroot\js\jquery-1.10.2.min.map" />
   </ItemGroup>
