@@ -1,0 +1,414 @@
+<html>
+<head>
+	<title>All The Names</title>
+	<meta charset="UTF-8"> 
+	<meta name="description" content="First Names By Origin and Gender"/>
+	<link rel='stylesheet' type='text/css' href='../css/withouthaste.css' />
+	<style type='text/css'>	
+	.pageHeader {
+		color: #36AECF; /*dark chalky blue*/
+	}
+	.item {
+		color: black;
+	}
+	h3 {
+		padding-top: 0em;
+		padding-bottom: 0em;
+		margin-top: 0em;
+		margin-bottom: 0em;
+	}
+	table {
+		border-collapse: collapse;
+	}
+	td {
+		text-align: center;
+		vertical-align: top;
+	}
+	td.results {
+		text-align: left;
+	}
+	tr.results:hover {
+		background: white;
+		cursor: pointer;
+	}
+	button {
+		border: 2px solid black;
+		border-radius: 6px;
+		padding: 5px;
+		font-size: 16;
+		background: rgba(255, 255, 255, 0);
+	}
+	button:hover {
+		background: rgba(255, 255, 255, .65);
+	}
+	input[type='checkbox'] {
+		zoom: 1.25;
+		transform: scale(1.25);
+		-ms-transform: scale(1.25);
+		-webkit-transform: scale(1.25);
+		-o-transform: scale(1.25);
+		-moz-transform: scale(1.25);
+		transform-origin: 0 0;
+		-ms-transform-origin: 0 0;
+		-webkit-transform-origin: 0 0;
+		-o-transform-origin: 0 0;
+		-moz-transform-origin: 0 0;
+		-webkit-transform-origin: 0 0;
+	}
+	/*
+	input[type='checkbox'] {
+		-webkit-appearance:none;
+		width:15px;
+		height:15px;
+		background:white;
+		border-radius:3px;
+		border:1px solid #555;
+	}
+	input[type='checkbox']:checked {
+		background: #abd;
+	}
+	*/
+	.green {
+		background-color: #76ff7f;
+	}
+	.blue {
+		background-color: #adf8ff;
+	}
+	</style>
+</head>
+<body>
+	<div class="pageHeader">
+		All The Names <a class='basic' style="font-size:16;" href="www.withouthaste.com">Home Page</a>
+	</div>
+	
+	<table>
+		<tr>
+			<td style='text-align: left'>
+				<!-- sidebar -->
+				<div class='item green'>
+					<div id='originList' style='min-width:200px'>
+					</div>
+					<div width='100%' align='center'>
+						<br/>
+						<button onclick='clearOrigin()'>Clear</button>
+					</div>
+				</div>
+			</td>
+			<td>
+				<!-- center -->
+				<div class='item center green'>
+				<table width='100%'>
+				<tr>
+				<td>
+					<h3>First Letter</h3>
+					<table cellpadding='0px' align='center'>
+						<tr>
+							<td>All</td>
+							<td>A</td>
+							<td>B</td>
+							<td>C</td>
+							<td>D</td>
+							<td>E</td>
+							<td>F</td>
+							<td>G</td>
+							<td>H</td>
+							<td>I</td>
+							<td>J</td>
+							<td>K</td>
+							<td>L</td>
+							<td>M</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="firstLetter" value="All" /></td>
+							<td><input type="checkbox" name="firstLetter" value="A" /></td>
+							<td><input type="checkbox" name="firstLetter" value="B" /></td>
+							<td><input type="checkbox" name="firstLetter" value="C" /></td>
+							<td><input type="checkbox" name="firstLetter" value="D" /></td>
+							<td><input type="checkbox" name="firstLetter" value="E" /></td>
+							<td><input type="checkbox" name="firstLetter" value="F" /></td>
+							<td><input type="checkbox" name="firstLetter" value="G" /></td>
+							<td><input type="checkbox" name="firstLetter" value="H" /></td>
+							<td><input type="checkbox" name="firstLetter" value="I" /></td>
+							<td><input type="checkbox" name="firstLetter" value="J" /></td>
+							<td><input type="checkbox" name="firstLetter" value="K" /></td>
+							<td><input type="checkbox" name="firstLetter" value="L" /></td>
+							<td><input type="checkbox" name="firstLetter" value="M" /></td>
+						</tr>
+					</table>
+					<table cellpadding='0px' align='center'>
+						<tr>
+							<td>N</td>
+							<td>O</td>
+							<td>P</td>
+							<td>Q</td>
+							<td>R</td>
+							<td>S</td>
+							<td>T</td>
+							<td>U</td>
+							<td>V</td>
+							<td>W</td>
+							<td>X</td>
+							<td>Y</td>
+							<td>Z</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="firstLetter" value="N" /></td>
+							<td><input type="checkbox" name="firstLetter" value="O" /></td>
+							<td><input type="checkbox" name="firstLetter" value="P" /></td>
+							<td><input type="checkbox" name="firstLetter" value="Q" /></td>
+							<td><input type="checkbox" name="firstLetter" value="R" /></td>
+							<td><input type="checkbox" name="firstLetter" value="S" /></td>
+							<td><input type="checkbox" name="firstLetter" value="T" /></td>
+							<td><input type="checkbox" name="firstLetter" value="U" /></td>
+							<td><input type="checkbox" name="firstLetter" value="V" /></td>
+							<td><input type="checkbox" name="firstLetter" value="W" /></td>
+							<td><input type="checkbox" name="firstLetter" value="X" /></td>
+							<td><input type="checkbox" name="firstLetter" value="Y" /></td>
+							<td><input type="checkbox" name="firstLetter" value="Z" /></td>
+						</tr>
+					</table>
+					<table cellpadding='0px' align='center'>
+						<tr>
+							<td>Æ</td>
+							<td>Ά</td>
+							<td>Þ</td>
+							<td>Ø</td>
+							<td>Ł</td>
+							<td>Đ</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="firstLetter" value="Æ" /></td>
+							<td><input type="checkbox" name="firstLetter" value="Ά" /></td>
+							<td><input type="checkbox" name="firstLetter" value="Þ" /></td>
+							<td><input type="checkbox" name="firstLetter" value="Ø" /></td>
+							<td><input type="checkbox" name="firstLetter" value="Ł" /></td>
+							<td><input type="checkbox" name="firstLetter" value="Đ" /></td>
+						</tr>
+					</table>
+					<button onclick='clearFirstLetter()'>Clear</button>
+				</td>
+				<td>
+					<table cellpadding='0px' align='center'>
+						<tr>
+							<td colspan='50'><h3>Gender</h3></td>
+						</tr>
+						<tr>
+							<td>Boy</td>
+							<td>Girl</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" name="gender" value="Boy" /></td>
+							<td><input type="checkbox" name="gender" value="Girl" /></td>
+						</tr>
+					</table>
+				</td>
+				</tr>
+				</table>
+				</div>
+				
+				<div class='item center blue'>
+					<div>
+						<button onclick='searchNames(this)'>Update Results</button>
+					</div>
+					<table id='results' cellpadding="4px">
+					</table>
+				</div>
+				<!-- end: center -->
+			</td>
+		</tr>
+	</table>
+			
+	<div style='clear:both; margin-top:2em;'>
+	</div>
+
+</body>
+</html>
+
+<script type='text/javascript'>
+
+getOrigins();
+
+function clearFirstLetter()
+{
+	//remove all selections from FirstLetter checkboxes
+	var boxes = document.getElementsByName('firstLetter');
+	boxes.forEach(function(box) {
+		box.checked = false;
+	});
+}
+
+function clearOrigin()
+{
+	//remove all selections from Origin checkboxes
+	var boxes = document.getElementsByName('origin');
+	boxes.forEach(function(box) {
+		box.checked = false;
+	});
+}
+
+function getOrigins()
+{
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4) {
+			if(this.status == 200) {
+				var results = JSON.parse(this.responseText);
+				displayOrigins(results);
+			}
+			else
+			{
+				console.log("Error: could not load origins.");
+			}
+		}
+	};
+	xhttp.open("GET", 'getOrigins.php', true);
+	xhttp.send();
+}
+
+function displayOrigins(origins)
+{
+	var container = document.getElementById('originList');
+	
+	var topLevelOrigins = origins.filter(x => x.superOrigin == '');
+	
+	addNewItem("All", 0);
+	container.appendChild(document.createElement('br'));
+	displaySubOrigins("", 0);
+	
+	function displaySubOrigins(parentOrigin, depth)
+	{
+		if(depth > 6)
+		{
+			console.log("Error: probably have a loop in the origins hierarchy.");
+			return;
+		}
+		
+		var children = origins.filter(x => x.superOrigin == parentOrigin);
+		if(children.length == 0)
+			return;
+		children.forEach(function(origin) {
+			addNewItem(origin.origin, depth);
+			displaySubOrigins(origin.origin, depth+1);
+			
+			if(depth == 0)
+			{
+				container.appendChild(document.createElement('br'));
+			}
+		});
+	}
+	
+	function addNewItem(text, depth)
+	{
+		var item = document.createElement('div');
+		var spacer = newSpacer(depth);
+		item.appendChild(spacer);
+		var box = document.createElement('input');
+		box.setAttribute('type', 'checkbox');
+		box.setAttribute('name', 'origin');
+		box.setAttribute('value', text);
+		item.appendChild(box);
+		var label = document.createElement('label');
+		label.innerHTML = text;
+		item.appendChild(label);
+		container.appendChild(item);
+	}
+	
+	function newSpacer(depth)
+	{
+		var label = document.createElement('label');
+		for(var i = 0; i < depth * 3; i++)
+		{
+			label.innerHTML += "&nbsp;"
+		}
+		return label;
+	}
+}
+
+function getCheckedValues(checkBoxName)
+{
+	var results = [];
+	var boxes = document.getElementsByName(checkBoxName);
+	boxes.forEach(function(box) {
+		if(box.checked == false)
+			return;
+		results.push(box.value);
+	});
+	return results;
+}
+
+function searchNames(button)
+{
+	var buttonText = button.innerHTML;
+	button.innerHTML = "Loading...";
+
+	var selectedLetters = getCheckedValues('firstLetter');
+	var letters = "All";
+	if(!selectedLetters.includes("All") && selectedLetters.length > 0)
+		letters = encodeURIComponent(selectedLetters.join(","));
+	
+	var selectedGenders = getCheckedValues('gender');
+	var gender = "All";
+	if(selectedGenders.length == 1)
+		gender = selectedGenders[0];
+		
+	var selectedOrigins = getCheckedValues('origin');
+	var origins = "All";
+	if(!selectedOrigins.includes("All") && selectedOrigins.length > 0)
+		origins = selectedOrigins.join(",");
+
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4) {
+			if(this.status == 200) {
+				var results = JSON.parse(this.responseText);
+				displayResults(results);
+			}
+			else
+			{
+				alert("error occurred");
+			}
+			button.innerHTML = buttonText;
+		}
+	};
+	xhttp.open("GET", `searchNames.php?gender=${gender}&letters=${letters}&origins=${origins}`, true);
+	xhttp.send();
+}
+
+function displayResults(results)
+{
+	var container = document.getElementById('results');
+	container.innerHTML = "";
+	
+	var countRow = document.createElement('tr');
+	var countCell = getResultCell(results.length + " Names Found");
+	countCell.setAttribute('colspan', '4');
+	countRow.appendChild(countCell);
+	container.appendChild(countRow);
+
+	var i = 1;
+	results.forEach(function(record) {
+		var row = document.createElement('tr');
+		row.classList.add("results");
+		var cellI = getResultCell(i);
+		row.appendChild(cellI);
+		var cellA = getResultCell(record.name);
+		row.appendChild(cellA);
+		var cellB = getResultCell((record.isBoy == 1) ? "Boy" : "");
+		row.appendChild(cellB);
+		var cellC = getResultCell((record.isGirl == 1) ? "Girl" : "");
+		row.appendChild(cellC);
+		var cellD = getResultCell(record.origins);
+		row.appendChild(cellD);
+		container.appendChild(row);
+		i++;
+	});
+}
+
+function getResultCell(contents)
+{
+	var cell = document.createElement('td');
+	cell.classList.add('results');
+	cell.innerHTML = contents;
+	return cell;
+}
+</script>
